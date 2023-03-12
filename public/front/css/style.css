@@ -42,18 +42,22 @@
 		height: auto;
 		max-width: 100%;
 	}
-	.logo a{
+
+	.logo a {
 		width: 50px;
 		height: 40px;
 	}
-	.logo img{
+
+	.logo img {
 		width: 100%;
 		height: 100%;
 		object-fit: contain;
 	}
-	header{
+
+	header {
 		background-color: #a32459;
 	}
+
 	/* COMMENTS */
 
 	.comment-area {
@@ -63,7 +67,8 @@
 		font-size: 14px !important;
 		font-size: 0.95em;
 		text-align: right;
-		font-family: 'Myriad Pro', sans-serif;background:#fff;
+		font-family: 'Myriad Pro', sans-serif;
+		background: #fff;
 	}
 
 	.action .active-like {
@@ -101,7 +106,7 @@
 		padding: 0 10px;
 	}
 
-	.tot-likes > p {
+	.tot-likes>p {
 		line-height: 20px;
 		padding: 5px 0;
 		color: #3f5199;
@@ -114,18 +119,18 @@
 		overflow: hidden;
 	}
 
-	.like-imgs > div {
+	.like-imgs>div {
 		display: inline-block;
 		margin-right: 5px;
 		position: relative;
 		margin-bottom: 5px;
 	}
 
-	.like-imgs > div img {
+	.like-imgs>div img {
 		display: block;
 	}
 
-	.like-imgs > div .reaction-img {
+	.like-imgs>div .reaction-img {
 		position: absolute;
 		bottom: -5px;
 		right: -5px;
@@ -267,7 +272,7 @@
 		text-align: center;
 		padding: 10px;
 		margin-top: 5px;
-		cursor: pointer
+		cursor: pointer;
 	}
 
 	.button:hover {
@@ -282,6 +287,61 @@
 		text-align: center;
 		padding: 10px;
 		margin-top: 10px;
+	}
+
+	fieldset {
+		margin: 20px 0;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		padding: 10px;
+		text-align: center;
+	}
+
+	legend {
+		text-align: center;
+		font-size: 18px;
+		font-weight: bold;
+	}
+
+	/* تغيير تنسيق الـ radio button */
+	input[type="radio"] {
+		opacity: 0;
+		position: absolute;
+		cursor: pointer;
+	}
+
+	.question {
+		display: none;
+	}
+
+	.radio label {
+		display: inline-block;
+		margin: 0 10px 10px 0;
+		width: 100%;
+		font-weight: bold;
+		border-radius: 4px;
+		background-color: #a32459;
+		color: #fff;
+		font-size: 1.2em;
+		font-weight: bold;
+		text-align: center;
+		padding: 10px;
+		cursor: pointer;
+		transition: .4s ease-in-out;
+		box-shadow: -2px 2px 8px 3px rgb(0 0 0 / 75%);
+		-webkit-box-shadow: -2px 2px 8px 3px rgb(0 0 0 / 75%);
+		-moz-box-shadow: -2px 2px 8px 3px rgb(0 0 0 / 75%);
+	}
+
+	.radio label:hover {
+		background-color: #3498db;
+	}
+
+	/* تحديد التنسيق الخاص بالخيار المحدد */
+	input[type="radio"]:checked+label {
+		background-color: #3498db;
+		color: #fff;
+		border-color: #3498db;
 	}
 
 	a {
@@ -307,15 +367,32 @@
 		font-size: 0px;
 	}
 
-	.gutschein {
+	div.button {
 		background-color: #a32459;
-		border-radius: 10px;
+		border-radius: 3px;
 		padding: 10px;
 		font-weight: bold;
 		color: #ffffff;
 		font-size: 1.0em;
-		margin-top: 2px;
+		margin-block: 5px;
 		text-align: center;
+		box-shadow: -2px 2px 8px 3px rgb(0 0 0 / 75%);
+		-webkit-box-shadow: -2px 2px 8px 3px rgb(0 0 0 / 75%);
+		-moz-box-shadow: -2px 2px 8px 3px rgb(0 0 0 / 75%);
+	}
+
+	.gutschein {
+		background-color: #a32459;
+		border-radius: 3px;
+		padding: 10px;
+		font-weight: bold;
+		color: #ffffff;
+		font-size: 1.0em;
+		margin-block: 5px;
+		text-align: center;
+		box-shadow: -2px 2px 8px 3px rgb(0 0 0 / 75%);
+		-webkit-box-shadow: -2px 2px 8px 3px rgb(0 0 0 / 75%);
+		-moz-box-shadow: -2px 2px 8px 3px rgb(0 0 0 / 75%);
 	}
 
 	.frage {

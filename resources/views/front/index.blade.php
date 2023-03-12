@@ -1,56 +1,33 @@
 <html>
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <title> سجل ألان للحصول لتحصل علي فرصة في برنامج المساعدات المالية الخاصة بمنطقتكم,, رابط التسجيل </title>
-
-
     <meta name="keywords" content="سجل الآن لتحصل علي فرصة  في برنامج المساعدات المالية الخاصة بمنطقتكم ">
     <meta name="description" content=" سجل الآن لتحصل علي فرصة  في برنامج المساعدات المالية الخاصة بمنطقتكم ">
     <meta name="author" content="بيان">
-    <meta property="image" content="https://i.imgur.com/EatZyc1.jpg">
+    {{-- <meta property="image" content="https://i.imgur.com/EatZyc1.jpg"> --}}
     <meta property="type" content="article">
     <meta property="og:title" content="سجل الآن لتحصل علي فرصة  في برنامج المساعدات المالية الخاصة بمنطقتكم">
     <meta property="og:keywords" content="سجل الآن لتحصل علي فرصة  في برنامج المساعدات المالية الخاصة بمنطقتكم">
     <meta property="og:description" content="سجل الآن لتحصل علي فرصة  في برنامج المساعدات المالية الخاصة بمنطقتكم">
-    <meta property="og:image" content="https://i.imgur.com/i0yGkZL.png">
-    <link rel="icon" href="https://i.imgur.com/i0yGkZL.png">
+    {{-- <meta property="og:image" content="https://i.imgur.com/i0yGkZL.png"> --}}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{-- <link rel="icon" href="https://i.imgur.com/i0yGkZL.png"> --}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('front/css/style.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ asset('front/css/style.css') }}">
 
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F0Z2GGF8V9"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-F0Z2GGF8V9');
-    </script>
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8717860410388350"
-        crossorigin="anonymous"></script>
-    <script src="{{ asset('front/js/popper.js') }}"></script>
-    <script src="{{ asset('front/js/jquery.js') }}"></script>
-    <script src="{{ asset('front/s4.min.js') }}"></script>
 
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css">
 
@@ -88,6 +65,10 @@
             font-family: 'DroidArabicKufiRegular';
             font-weight: normal;
             font-style: normal;
+        }
+
+        p {
+            margin-bottom: 0px !important;
         }
 
         .com-txt {
@@ -161,366 +142,195 @@
             </a>
         </div>
     </div>
+    {{-- content  --}}
     <div class="wrapper_02">
         <div class="container-fluid">
-            <center>
-                <strong>
-                    مساعدات مالية للشباب وللأسر المتعففة
-                    <br> تابع صفحتنا عبر الفيس بوك لكل يصلك كل جديد عن المساعدات والمنح والكابونات
-                </strong>
-                <div id="fb-root"></div>
-                <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v11.0"
-                    nonce="KUAoRfrT"></script>
-                <div class="fb-like" data-href="https://www.facebook.com/mos3dat3ajel/?ref=page_internal" data-width=""
-                    data-layout="box_count" data-action="like" data-size="large" data-share="false"></div>
-                <div class="fb-like" data-href="https://www.facebook.com/d3m.faker" data-width=""
-                    data-layout="box_count" data-action="like" data-size="large" data-share="false"></div>
-                </strong><br>
-                <div class="gutschein">سيقوم فريق البحث الميداني الخاص بالجمعية بالتواصل عبر أرقامكم المرسلة ومناطق
-                    سكنكم
-                    لدراسة الحالة وتقييمها
-                </div>
-                <div id="aufforderung"
-                    style="text-align: center; margin-top: 10px; margin-bottom: 10px; font-size: 1.0em; font-weight: bold;">
-                    الرجاء الإجابة على الأسئلة التالية في الاسفل</div>
-                <center>
-                </center>
-                <div id="frage_01">
-                    <div class="frage">اختر الفئة العمرية </div>
-                    <div class="button">20-40</div>
-                    <div class="button">40-60</div>
-                    <div class="button">60-80</div>
-                </div>
-
-                <div id="frage_02" style="display: none">
-                    <div class="frage">الحالة الاجتماعية</div>
-                    <div class="button">عازب(ة)</div>
-                    <div class="button">متزوج(ة)</div>
-                    <div class="button">مطلق(ة)</div>
-                </div>
-                <div id="frage_03" style="display: none">
-                    <div class="frage">هل إستفدت قبل ذلك من مساعدات الجمعية</div>
-                    <div class="button">نعم</div>
-                    <div class="button">لا</div>
-                </div>
-                <div id="frage_04" style="display: none">
-                    <div class="frage">املأ الاستمارة في الأسفل</div>
-                    <center>
-                        <input class="for" placeholder="الاسم رباعي" id="nameform"><input class="for"
-                            placeholder="عدد افراد الأسرة " id="cityform"><input class="for"
-                            placeholder="مكان السكن" id="city1form"><input class="for"
-                            placeholder="رقم الهاتف/الجوال" id="phoneform">
-                        <button class="btn btn-info"
-                            style="width: 150px;padding: 15px;font-size: 15px;background-color: ">تسجيل</button>
-                    </center><br>
-
-
-                </div>
-
-                <center>
-
-
-
-
-                </center>
-
-
-
-                <br>
-                <center>
-
-                    <center>
-
-
-
-
-
-                    </center>
-
-
-                    <!-- Content 2 -->
-
-                    <div id="content_02" style="display: none; margin-top: 15px;">يرجى الانتظار، نحن نقوم بمعالجة
-                        إجاباتك
-                        <br>
-                        <img id="laden" class="img-responsive center-block" style="padding:10px;"
-                            src="img/loading.gif">
-                        <div id="pruefen_01" style="display: none;"><span
-                                style="color: #009846; padding-right: 5px;"><i class="fa fa-check"
-                                    aria-hidden="true"></i></span> تم الرد على جميع الأسئلة
+            <div class="row justify-content-center">
+                {{-- اول نص --}}
+                <div class="row">
+                    <div class="col justify-content-center p-4">
+                        <div class="row">
+                            <p class="text-center pt-2 fw-bolder"> مساعدات مالية للشباب وللأسر المتعففة </p>
                         </div>
-                        <div id="pruefen_02" style="display: none;"><span
-                                style="color: #009846; padding-right: 5px;"><i class="fa fa-check"
-                                    aria-hidden="true"></i></span> لم يتم العثور على إدخالات مكررة
+                        <div class="row">
+                            <p class="text-center pt-2"> تابع صفحتنا عبر الفيس بوك لكل يصلك كل جديد عن المساعدات والمنح
+                                والكابونات </p>
                         </div>
-                        <div id="pruefen_03" style="display: none;"><span
-                                style="color: #009846; padding-right: 5px;"><i class="fa fa-check"
-                                    aria-hidden="true"></i></span> أنت مؤهل بنسبة 100٪.
-                        </div>
-
                     </div>
-                    <center>
-                        <div id="content_03" style="display: none; margin-top:15px;">
-                            <div style="font-size:1.4em;margin-bottom:10px;"><strong id="Welcome">
-                                </strong></div>
-                            <div style="margin-bottom: 10px">
-
-                                <font color="green">
-                                    لم يتبقى لك سوى خطوة واحدة .
-                                </font>
-
-
-
-
+                </div>
+                {{-- صفحات الفيس  --}}
+                <div class="row">
+                    <div class="row d-flex justify-content-center p-5">
+                        <div id="fb-root"></div>
+                        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v11.0"
+                            nonce="KUAoRfrT"></script>
+                        <div class="col-md-1 col-sm-6 d-flex justify-content-center">
+                            <div class="fb-like" data-href="https://www.facebook.com/mos3dat3ajel/?ref=page_internal"
+                                data-width="75" data-layout="box_count" data-action="like" data-size="large"
+                                data-share="true" data-colorscheme="light"></div>
+                        </div>
+                        <div class="col-md-1 col-sm-6 d-flex justify-content-center">
+                            <div class="fb-like" data-href="https://www.facebook.com/d3m.faker" data-width="75"
+                                data-layout="box_count" data-action="like" data-size="large" data-share="true"
+                                data-colorscheme="dark"></div>
+                        </div>
+                    </div>
+                </div>
+                {{-- ثاني نص --}}
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 col-sm-10 tt">
+                            <div class="gutschein">
+                                <p>
+                                    سيقوم فريق البحث الميداني الخاص بالجمعية بالتواصل عبر أرقامكم المرسلة ومناطق سكنكم
+                                    لدراسة الحالة
+                                    وتقييمها
+                                </p>
                             </div>
-                            <b> 1.اضغط على زر الواتساب الموجود في الأسفل وارسل الرسالة لـ 25 شخص او مجموعات مقسمين علي 5
-                                مرات كل مرة بـ 5 اشخاص او 5 مجموعات على الـ WhatsApp ليتم تأكيد طلبك في رسالة على
-                                الواتساب .
-                                <br>
-                                <font color="red"> كلما زادت عدد مشاركاتك زادت فرصتك للربح
-                                </font>
-                                .<b>
-                                    <a href="whatsapp://send?text= سجل ألان للحصول لتحصل علي فرصة في التسجيل في برنامج المساعدات المالية الخاصة بمنطقتكم,, رابط التسجيل https://khabarnws.com/">
-                                        <div id="b1" class="button2">
-                                            <img style="max-height:20px;" src="https://i.imgur.com/6G3R3Bw.png">
-                                            <span style="margin-left:5px; ">
-
-                                                واتساب</span>
-                                        </div>
-                                    </a>
-                                    <br><br> 2. بعد ذلك ارجع الى هذه الصفحة وأنقر على زر تأكيد رقم الهاتف وارسال الطلب
-                                    (الموجود في الأسفل باللون العنابي) وأدخل رقم هاتفك ومعلوماتك كاملة في الصفحة التالية
-                                    (100٪ مجانا) للتأكد من هويتك,<font color="red"> ملاحظة : لن يتم تأكيد طلبك
-                                        والتسجيل
-                                        في حال لم تنشر الرسالة
-                                    </font>
-                                    <a href="javascript:void(0)" id="b2">
-                                        <div class="button"><span style="padding-right: 5px;"
-                                                class="glyphicon glyphicon-shopping-cart"></span>تأكيد رقم الهاتف
-                                            وإرسال
-                                            الطلب</div>
-                                    </a>
-                                    <br><br> 3. بعد ذلك أدخل الكود الذي سيصلك عبر رسالة نصية من أجل تأكيد رقم الهاتف .
-                                    <br><br> 5. بعد ذلك سوف يتم التواصل معك عن طريق رقم الهاتف الذي أدخلته
-                                    <hr>
-
-                                    <br>
-                                    <font color="red"> ملاحظة : لن يتم تأكيد طلبك والتسجيل في حال لم تنشر الرسالة
-                                    </font>
-
-                                </b>
-                            </b>
-                        </div><b><b>
-                                <div class="comment-area">
-                                    <div class="action">
-                                        <a class="like" href="javascript: void(0);">إعجاب</a>
-                                        <a class="bubble" href="javascript: void(0);">تعليق</a>
-                                        <a class="share-btn" href="javascript: void(0);">مشاركة</a>
-                                    </div>
-                                    <div class="tot-likes">
-                                        <div class="like-imgs">
-                                            <div><img src="https://i.imgur.com/3rAWst3.jpg" width="32"
-                                                    height="32"><img class="reaction-img" src="img/btn.png"
-                                                    width="16" height="16"></div>
-                                            <div><img src="https://i.imgur.com/JAj8rQK.png" width="32"
-                                                    height="32"><img class="reaction-img" src="img/love.png"
-                                                    width="16" height="16"></div>
-                                            <div><img src="https://i.imgur.com/TtZFUiN.jpg" width="32"
-                                                    height="32"><img class="reaction-img" src="img/btn.png"
-                                                    width="16" height="16"></div>
-                                            <div><img src="https://i.imgur.com/gIJMm0l.jpg" width="32"
-                                                    height="32"><img class="reaction-img" src="img/btn.png"
-                                                    width="16" height="16"></div>
-                                            <div><img src="https://i.imgur.com/FhujCw2.png" width="32"
-                                                    height="32"><img class="reaction-img" src="img/btn.png"
-                                                    width="16" height="16"></div>
-                                            <div><img src="https://i.imgur.com/OBmw9Rg.jpg" width="32"
-                                                    height="32"><img class="reaction-img" src="img/btn.png"
-                                                    width="16" height="16"></div>
-                                            <div><img src="https://i.imgur.com/MWd0hlt.jpg" width="32"
-                                                    height="32"><img class="reaction-img" src="img/love.png"
-                                                    width="16" height="16"></div>
-                                            <div><img src="https://i.imgur.com/u9tMvhg.jpg" width="32"
-                                                    height="32"><img class="reaction-img" src="img/love.png"
-                                                    width="16" height="16"></div>
-                                            <div><img src="https://i.imgur.com/IFiRfJa.jpg" width="32"
-                                                    height="32"><img class="reaction-img" src="img/btn.png"
-                                                    width="16" height="16"></div>
-                                            <div><img src="https://i.imgur.com/rRIzlQj.jpg" width="32"
-                                                    height="32"><img class="reaction-img" src="img/love.png"
-                                                    width="16" height="16"></div>
-                                        </div>
-
-
-                                        <p><span class="you">أنت و </span> 117,259 آخرون أعجبوا بهذا</p>
-                                    </div>
-                                    <div class="comment">
-                                        <img class="profile" src="https://i.imgur.com/JAj8rQK.png" width="50"
-                                            height="50">
-                                        <p class="com-txt"><a class="name" href="javascript:void(0);">منى
-                                                أحمد</a>بعد
-                                            التسجيل فى الموقع بالطريقة التى شرحتموها جائني رسالة رسالة بخطوات الاستلام
-                                            شكراً
-                                            لكم</p>
-                                        <div class="act">
-                                            <a class="fblike" href="javascript:void(0);">إعجاب</a> ·
-                                            <a href="javascript:void(0);">رد</a> ·
-                                            <span class="liked">50</span>.
-                                            <span class="time">28 دقيقة</span>
-                                        </div>
-                                        <div class="comment">
-                                            <img class="profile" src="https://i.imgur.com/gIJMm0l.jpg" width="50"
-                                                height="50">
-                                            <p class="com-txt" style="margin-right: 35px;"><a class="name"
-                                                    href="javascript:void(0);">سارة نديم</a> نعم صحيح انا كمان هيك
-                                                طلبوامني
-                                            </p>
-
-                                            <div class="act" style="margin-right: 35px;">
-                                                <a class="fblike" href="javascript:void(0);">إعجاب</a> ·
-                                                <a href="javascript:void(0);">رد</a> ·
-                                                <span class="liked">16</span>
-                                                <span class="time">20 دقيقة</span>
+                        </div>
+                    </div>
+                </div>
+                {{-- ثالث نص  --}}
+                <div class="container">
+                    <div class="row">
+                        <div id="aufforderung" class="d-flex justify-content-center align-items-center p-2">
+                            <p class="text-center fw-bolder">
+                                الرجاء الإجابة على الأسئلة التالية في الاسفل
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {{-- اعلان ثاني  --}}
+                <div class="container">
+                    <div class="row">
+                        <div class="ads-2">
+                        </div>
+                    </div>
+                </div>
+                {{-- الاسئلة --}}
+                <form action="" method="post">
+                    <div class="q">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 col-sm-10">
+                                <div class="container">
+                                    <div id="questionnaire">
+                                        {{-- السؤال الاول  --}}
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-8 col-sm-12">
+                                                <div class="question">
+                                                    <h3 class="text-center">What is your favorite color?</h3>
+                                                    <div class="radio">
+                                                        <input type="radio" id="red1" name="q1"
+                                                            value="red1">
+                                                        <label for="red1">Red</label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <input type="radio" id="blue1" name="q1"
+                                                            value="blue1">
+                                                        <label for="blue1">Blue</label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <input type="radio" id="green1" name="q1"
+                                                            value="green1">
+                                                        <label for="green1">Green</label>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div id="com3" class="comment hider" style="display: block;">
-                                            <img class="profile" src="https://i.imgur.com/FhujCw2.png" width="50"
-                                                height="50">
-                                            <p class="com-txt" style="margin-right: 35px;"><a class="name"
-                                                    href="javascript:void(0);">محمد السيد</a> يارب أكون منكم انا قدمت
-                                                وقالو
-                                                لي أنتظر يومين</p>
-                                            <div class="act" style="margin-right: 35px;">
-                                                <a class="fblike" href="javascript:void(0);">إعجاب</a> ·
-                                                <a href="javascript:void(0);">رد</a> ·
-                                                <span class="liked"></span>
-                                                <span class="time">الآن</span>
+                                        {{-- نهاية السؤال الاول  --}}
+                                        {{-- الفورم --}}
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="question">
+                                                    <h3 class="text-center"> املأ الاستمارة في الأسفل </h3>
+                                                    <div class="input-group p-2">
+                                                        <span class="input-group-text">الاسم رباعي</span>
+                                                        <input type="text" placeholder="الاسم رباعي"
+                                                            aria-label="الاسم رباعي" class="form-control"
+                                                            id="name">
+                                                    </div>
+                                                    <div class="input-group p-2">
+                                                        <span class="input-group-text">عدد افراد العائلة</span>
+                                                        <input type="text" placeholder="عدد افراد العائلة"
+                                                            aria-label="عدد افراد العائلة" class="form-control"
+                                                            id="family">
+                                                    </div>
+                                                    <div class="input-group p-2">
+                                                        <span class="input-group-text">رقم الهاتف</span>
+                                                        <input type="text" placeholder="مكان السكن"
+                                                            aria-label="مكان السكن" class="form-control"
+                                                            id="address">
+                                                    </div>
+                                                    <div class="input-group p-2">
+                                                        <span class="input-group-text">رقم الهاتف</span>
+                                                        <input type="text" placeholder="رقم الهاتف"
+                                                            aria-label="رقم الهاتف" class="form-control"
+                                                            id="mobile">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                        {{-- نهاية الفورم --}}
                                     </div>
-                                    <div class="comment">
-                                        <img class="profile" src="https://i.imgur.com/vNboUp7.png" width="50"
-                                            height="50">
-                                        <p class="com-txt"><a class="name" href="javascript:void(0);">عادل
-                                                مسعد</a>الحمد لله أتممت كل الخطوات التسجيل وجائني رسالة بأنهم سيرسلون لي
-                                        </p>
-
-                                        <div class="act">
-                                            <a class="fblike" href="javascript:void(0);">إعجاب</a> ·
-                                            <a href="javascript:void(0);">رد</a> ·
-                                            <span class="liked">27</span>
-                                            <span class="time">7 دقيقة</span>
+                                    <div class="row py-5 submit">
+                                        <div class="col d-flex justify-content-center">
+                                            <button type="submit" class="btn btn-success" disabled>تأكيد
+                                                الإجابات</button>
                                         </div>
-                                    </div>
-                                    <div class="comment">
-                                        <img class="profile" src="https://i.imgur.com/u9tMvhg.jpg" width="50"
-                                            height="50">
-                                        <p class="com-txt"><a class="name" href="javascript:void(0);">فاطمة
-                                                خالد</a>انا
-                                            تقدمت وارسلو لي و رسالة</p>
-                                        <div class="act">
-                                            <a class="fblike" href="javascript:void(0);">إعجاب</a> ·
-                                            <a href="javascript:void(0);">رد</a> ·
-                                            <span class="liked">18</span>
-                                            <span class="time">3 دقيقة</span>
-                                        </div>
-                                    </div>
-                                    <div id="com1" class="comment hider" style="display: block;">
-                                        <img class="profile" src="https://i.imgur.com/OBmw9Rg.jpg" width="50"
-                                            height="50">
-                                        <p class="com-txt"><a class="name" href="javascript:void(0);">هيفاء
-                                                الشلبي</a>
-                                            انا كملت كل الخطوات وتم تحويلي مباشرة للموقع بنجاح اشكركم</p>
-                                        <div class="act">
-                                            <a class="fblike" href="javascript:void(0);">إعجاب</a> ·
-                                            <a href="javascript:void(0);">رد</a> ·
-                                            <span class="liked likehide"></span>
-                                            <span class="time">الآن</span>
-                                        </div>
-                                    </div>
-                                    <div id="com2" class="comment hider" style="display: block;">
-                                        <img class="profile" src="https://i.imgur.com/TtZFUiN.jpg" width="50"
-                                            height="50">
-                                        <p class="com-txt"><a class="name" href="javascript:void(0);">جمانا
-                                                هشام</a>اللهم لك الحمد، أرسلو لي ايضاً بريد</p>
-                                        <div class="act">
-                                            <a class="fblike" href="javascript:void(0);">إعجاب</a> ·
-                                            <a href="javascript:void(0);">رد</a> ·
-                                            <span class="liked likehide"></span>
-                                            <span class="time">الآن</span>
-                                        </div>
-                                        <div id="com5" class="comment hider" style="display: block;">
-                                            <img class="profile" src="https://i.imgur.com/MWd0hlt.jpg" width="50"
-                                                height="50">
-                                            <p class="com-txt" style="margin-right: 35px;"><a class="name"
-                                                    href="javascript:void(0);">محمد مصطفى</a> يارب أكرمنا بهذه المساعدة
-                                                نحن
-                                                بحاجه لهذه المساعدة جداً</p>
-                                            <div class="act" style="margin-right: 35px;">
-                                                <a class="fblike" href="javascript:void(0);">إعجاب</a> ·
-                                                <a href="javascript:void(0);">رد</a> ·
-                                                <span class="liked likehide"></span>
-                                                <span class="time">الآن</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="com4" class="comment hider" style="display: block;">
-                                        <img class="profile" src="https://i.imgur.com/3rAWst3.jpg" width="50"
-                                            height="50">
-                                        <p class="com-txt"><a class="name" href="javascript:void(0);">غادة علي</a>
-                                            شكراً جزيلاً</p>
-                                        <div class="act">
-                                            <a class="fblike" href="javascript:void(0);">إعجاب</a> ·
-                                            <a href="javascript:void(0);">رد</a> ·
-                                            <span class="liked likehide"></span>
-                                            <span class="time">الآن</span>
-                                        </div>
-                                    </div>
-                                    <div id="myCom" class="comment">
-                                        <img class="profile" src="https://i.imgur.com/jPQazNw.jpg" width="50"
-                                            height="50">
-                                        <p class="com-txt"><a class="name" href="javascript:void(0);">أنت</a>
-                                            <span id="myComment"></span>
-                                        </p>
-                                        <div class="act">
-                                            <a class="fblike" href="javascript:void(0);">إعجاب</a> ·
-                                            <a href="javascript:void(0);">رد</a> ·
-                                            <span class="liked likehide"></span>
-                                            <span class="time">الآن</span>
-                                        </div>
-                                    </div>
-                                    <div class="addComment">
-                                        <img src="https://i.imgur.com/jPQazNw.jpg" width="50" height="50">
-                                        <input type="text" id="addCom" placeholder="اكتب تعليقك....">
                                     </div>
                                 </div>
-                                <center style="margin-top: 25px;margin-bottom: 25px;">
-                                    جميع الحقوق محفوظة© 2023
-                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                {{-- الاسئلة --}}
 
-                                <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
-                                <script src="{{ asset('front/js/scripts.js') }}"></script>
-
-
-
-
-                                <!-- Messenger المكون الإضافي "دردشة" Code -->
-                                <div id="fb-root"></div>
-
-
-
-
-                            </b></b>
-                    </center>
-                </center>
-            </center>
+            </div>
         </div>
-        {{-- التاريخ --}}
-        <div class="txt01" style="font-size: 1.4em; padding-bottom:8px;font-weight:bold;">
-            سجل الآن لتحصل علي فرصة في برنامج المساعدات المالية الخاصة بمنطقتكم </div>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+            crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
+        <script>
+            const inputs = document.querySelectorAll('input');
+            const submit = document.querySelector('.submit button')
+            var lastInput
+            inputs.forEach(function(element, index) {
+                if (++index == inputs.length) {
+                    document.lastInput = element;
+                }
+            });
+            document.lastInput.addEventListener('change', _ => {
+                inputs.forEach(element => {
+                    if (element.value) {
+                        submit.removeAttribute('disabled')
+                    } else {
+                        submit.setAttribute('disabled', 'true')
+                    }
+                });
+            })
+            const form = document.querySelector('form');
+            // عند تقديم النموذج
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // إلغاء تحميل الصفحة الافتراضي
 
-    </div>
+                // احصل على الإجابات
+                const answers = {};
+                const inputs = form.querySelectorAll('input[type="radio"]:checked');
+                const name = document.querySelector('#name').value
+                inputs.forEach(input => {
+                    const name = input.name;
+                    const value = input.value;
+                    answers[name] = value;
+                });
 
+                // اعرض الإجابات
+
+            });
+        </script>
+        <script src="{{ asset('front/js/custom.js') }}"></script>
 </body>
 
 </html>

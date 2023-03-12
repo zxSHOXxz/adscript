@@ -1,13 +1,5 @@
 var texts = ["  سارع *وظائف شاغرة لكافة المؤهلات برواتب وحوافز وبدل سفر*, مطلوب كافة المؤهلات في اتصالات http://bit.ly/jobsetisalat "];
 
-
-
-
-
-
-
-
-
 function loadCom(a, b) {
 	setTimeout(function () {
 		$(a).fadeIn(250);
