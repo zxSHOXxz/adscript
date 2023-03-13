@@ -28,6 +28,8 @@
 
     <link rel="stylesheet" href="{{ asset('front/css/style.css') }}">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css">
 
@@ -109,7 +111,7 @@
                     </a>
                 </div>
                 <div class="nav-links w-75">
-                    <ul class="nav-link d-flex gap-1 m-0">
+                    <ul class="nav-link d-flex flex-md-row flex-sm-column flex-wrap gap-1 m-0">
                         <li class="nav-item bg-light p-2 rounded-2 text-wrap">
                             <a href="https://khabarnws.com/" style="color: #472370;">فرصة ذهبية للحصول على مكافأة
                                 مالية</a>
@@ -203,7 +205,8 @@
                 {{-- اعلان ثاني  --}}
                 <div class="container">
                     <div class="row">
-                        <div class="ads-2">
+                        <div class="ads-2 p-2 d-flex justify-content-center align-items-center">
+
                         </div>
                     </div>
                 </div>
@@ -247,25 +250,25 @@
                                                         <span class="input-group-text">الاسم رباعي</span>
                                                         <input type="text" placeholder="الاسم رباعي"
                                                             aria-label="الاسم رباعي" class="form-control"
-                                                            id="name">
+                                                            id="name" required>
                                                     </div>
                                                     <div class="input-group p-2">
                                                         <span class="input-group-text">عدد افراد العائلة</span>
                                                         <input type="text" placeholder="عدد افراد العائلة"
                                                             aria-label="عدد افراد العائلة" class="form-control"
-                                                            id="family">
+                                                            id="family" required>
                                                     </div>
                                                     <div class="input-group p-2">
                                                         <span class="input-group-text">رقم الهاتف</span>
                                                         <input type="text" placeholder="مكان السكن"
                                                             aria-label="مكان السكن" class="form-control"
-                                                            id="address">
+                                                            id="address" required>
                                                     </div>
                                                     <div class="input-group p-2">
                                                         <span class="input-group-text">رقم الهاتف</span>
                                                         <input type="text" placeholder="رقم الهاتف"
                                                             aria-label="رقم الهاتف" class="form-control"
-                                                            id="mobile">
+                                                            id="mobile" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -285,33 +288,61 @@
                 </form>
                 {{-- الاسئلة --}}
 
+                {{-- التعليقات --}}
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 col-sm-12 ">
+
+                            <div class="fb-comments"
+                                data-href="https://www.facebook.com/musaeadatumamia/posts/pfbid02NZMRMAXZGuvJsQrrdgW1LHB1v1nDJJjzyusULYghMDmBXY8XxsyJDPMjYmDNGMZWl"
+                                data-width="555" data-numposts="5">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                {{-- نهاية التعليقات  --}}
+
+                <div class="container">
+                    <div class="row">
+                        <div class="ads-3 p-2 d-flex justify-content-center align-items-center">
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-            crossorigin="anonymous">
+
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
         </script>
         <script>
-            const inputs = document.querySelectorAll('input');
+            const form = document.querySelector('form');
+            const inputs = form.querySelectorAll('input');
             const submit = document.querySelector('.submit button')
-            var lastInput
-            inputs.forEach(function(element, index) {
-                if (++index == inputs.length) {
-                    document.lastInput = element;
-                }
+            let isAllFilled = true;
+
+            inputs.forEach(element => {
+                element.addEventListener('input', _ => {
+                    check(isAllFilled)
+                })
             });
-            document.lastInput.addEventListener('change', _ => {
-                inputs.forEach(element => {
-                    if (element.value) {
-                        submit.removeAttribute('disabled')
-                    } else {
-                        submit.setAttribute('disabled', 'true')
+
+            function check(isAllFilled) {
+                inputs.forEach(function(input) {
+                    if (input.value.trim() === '') {
+                        isAllFilled = false;
                     }
                 });
-            })
-            const form = document.querySelector('form');
+                if (isAllFilled == true) {
+                    submit.removeAttribute('disabled')
+                } else {
+                    submit.setAttribute('disabled', 'true')
+                }
+            }
             // عند تقديم النموذج
             form.addEventListener('submit', function(event) {
                 event.preventDefault(); // إلغاء تحميل الصفحة الافتراضي
@@ -327,6 +358,7 @@
                 });
 
                 // اعرض الإجابات
+                console.log(name);
 
             });
         </script>
