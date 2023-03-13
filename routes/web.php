@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ColorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('front.index');
+});
+
+Route::prefix('cms/admin')->group(function () {
+    Route::view('/', 'cms.index')->name('dashboard');
+    Route::resource('color', ColorController::class);
 });
