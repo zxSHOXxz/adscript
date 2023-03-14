@@ -218,58 +218,38 @@
                                 <div class="container">
                                     <div id="questionnaire">
                                         {{-- السؤال الاول  --}}
-                                        <div class="row justify-content-center">
-                                            <div class="col-md-8 col-sm-12">
-                                                <div class="question">
-                                                    <h3 class="text-center">What is your favorite color?</h3>
-                                                    <div class="radio">
-                                                        <input type="radio" id="red1" name="q1"
-                                                            value="red1">
-                                                        <label for="red1">Red</label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <input type="radio" id="blue1" name="q1"
-                                                            value="blue1">
-                                                        <label for="blue1">Blue</label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <input type="radio" id="green1" name="q1"
-                                                            value="green1">
-                                                        <label for="green1">Green</label>
+                                        @foreach ($oquestions as $oquestion)
+                                            <div class="row justify-content-center">
+                                                <div class="col-md-8 col-sm-12">
+                                                    <div class="question">
+                                                        <h3 class="text-center">{{ $oquestion->content }}</h3>
+                                                        @foreach ($oquestion->options as $option)
+                                                            <div class="radio">
+                                                                <input type="radio" id="{{ $option->id }}"
+                                                                    name="{{ $option->id }}"
+                                                                    value="{{ $option->id }}">
+                                                                <label
+                                                                    for="{{ $option->id }}">{{ $option->content }}</label>
+                                                            </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endforeach
                                         {{-- نهاية السؤال الاول  --}}
                                         {{-- الفورم --}}
                                         <div class="row justify-content-center">
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="question">
                                                     <h3 class="text-center"> املأ الاستمارة في الأسفل </h3>
-                                                    <div class="input-group p-2">
-                                                        <span class="input-group-text">الاسم رباعي</span>
-                                                        <input type="text" placeholder="الاسم رباعي"
-                                                            aria-label="الاسم رباعي" class="form-control"
-                                                            id="name" required>
-                                                    </div>
-                                                    <div class="input-group p-2">
-                                                        <span class="input-group-text">عدد افراد العائلة</span>
-                                                        <input type="text" placeholder="عدد افراد العائلة"
-                                                            aria-label="عدد افراد العائلة" class="form-control"
-                                                            id="family" required>
-                                                    </div>
-                                                    <div class="input-group p-2">
-                                                        <span class="input-group-text">رقم الهاتف</span>
-                                                        <input type="text" placeholder="مكان السكن"
-                                                            aria-label="مكان السكن" class="form-control"
-                                                            id="address" required>
-                                                    </div>
-                                                    <div class="input-group p-2">
-                                                        <span class="input-group-text">رقم الهاتف</span>
-                                                        <input type="text" placeholder="رقم الهاتف"
-                                                            aria-label="رقم الهاتف" class="form-control"
-                                                            id="mobile" required>
-                                                    </div>
+                                                    @foreach ($iquestions as $iquestion)
+                                                        <div class="input-group p-2">
+                                                            <span class="input-group-text">{{ $iquestion->content }}</span>
+                                                            <input type="text" placeholder="{{ $iquestion->content }}"
+                                                                aria-label="{{ $iquestion->content }}" class="form-control"
+                                                                id="iquestion{{ $iquestion->id }}" required>
+                                                        </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
@@ -314,7 +294,6 @@
 
             </div>
         </div>
-
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
@@ -365,10 +344,11 @@
 
                 // اعرض الإجابات
                 let formData = new FormData();
-                formData.append('name', document.getElementById('name').value);
+                
                 for (const key in answers) {
                     formData.append(key, answers[key]);
                 }
+                console.log(answers);
                 // store('/cms/admin/oquestions', formData);
             });
         </script>

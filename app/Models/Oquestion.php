@@ -11,6 +11,6 @@ class Oquestion extends Model
 
     public function options()
     {
-        return $this->hasMany(Option::class, 'option_id', 'id');
+        return $this->hasMany(Option::class , 'oquestions_id');
     }
 }
