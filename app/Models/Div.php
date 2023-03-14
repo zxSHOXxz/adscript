@@ -10,6 +10,6 @@ class Div extends Model
     use HasFactory;
     public function color()
     {
-        return $this->hasOne(Color::class, 'color_id', 'id');
+        return $this->belongsTo(Color::class, 'color_id', 'id');
     }
 }

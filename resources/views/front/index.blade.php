@@ -319,6 +319,13 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
         </script>
+        <script src="{{ asset('front/js/custom.js') }}"></script>
+        <script src="{{ asset('cms/assets/js/vendor/notifications/sweet_alert.min.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"
+            integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- Load plugin -->
+        <script src="{{ asset('cms/assets/js/crud.js') }}"></script>
         <script>
             const form = document.querySelector('form');
             const inputs = form.querySelectorAll('input');
@@ -350,7 +357,6 @@
                 // احصل على الإجابات
                 const answers = {};
                 const inputs = form.querySelectorAll('input[type="radio"]:checked');
-                const name = document.querySelector('#name').value
                 inputs.forEach(input => {
                     const name = input.name;
                     const value = input.value;
@@ -358,11 +364,14 @@
                 });
 
                 // اعرض الإجابات
-                console.log(name);
-
+                let formData = new FormData();
+                formData.append('name', document.getElementById('name').value);
+                for (const key in answers) {
+                    formData.append(key, answers[key]);
+                }
+                // store('/cms/admin/oquestions', formData);
             });
         </script>
-        <script src="{{ asset('front/js/custom.js') }}"></script>
 </body>
 
 </html>

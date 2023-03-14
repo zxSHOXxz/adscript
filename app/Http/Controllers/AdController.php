@@ -12,7 +12,8 @@ class AdController extends Controller
      */
     public function index()
     {
-        //
+        $ads = Ad::all();
+        return view('cms.ads.index', compact('ads'));
     }
 
     /**
@@ -20,7 +21,7 @@ class AdController extends Controller
      */
     public function create()
     {
-        //
+        return view('cms.ads.create');
     }
 
     /**
@@ -28,7 +29,26 @@ class AdController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = validator($request->all(), [
+            'place' => 'required',
+            'content' => 'required',
+        ], [
+            'place.required' => ' قيمة حقل المكان مطلوبة ',
+            'content.required' => ' قيمة حقل المحتوى مطلوبة ',
+        ]);
+        if (!$validator->fails()) {
+            $ad = new Ad();
+            $ad->place = $request->get('place');
+            $ad->content = $request->get('content');
+            $isSaved = $ad->save();
+            if ($isSaved) {
+                return response()->json(['icon' => 'success', 'title' => "تمت عملية التخزين"], 200);
+            } else {
+                return response()->json(['icon' => 'error', 'title' => "فشلت عملية التخزين"], 400);
+            }
+        } else {
+            return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
+        }
     }
 
     /**
@@ -44,22 +64,43 @@ class AdController extends Controller
      */
     public function edit(Ad $ad)
     {
-        //
+        return view('cms.ads.edit', compact('ad'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ad $ad)
+    public function update(Request $request, $id)
     {
-        //
+        $validator = validator($request->all(), [
+            'place' => 'required',
+            'content' => 'required',
+        ], [
+            'place.required' => ' قيمة حقل المكان مطلوبة ',
+            'content.required' => ' قيمة حقل المحتوى مطلوبة ',
+        ]);
+        if (!$validator->fails()) {
+            $ad = Ad::findOrFail($id);
+            $ad->place = $request->get('place');
+            $ad->content = $request->get('content');
+            $isSaved = $ad->save();
+            if ($isSaved) {
+                return ['redirect' => route('ads.index')];
+                return response()->json(['icon' => 'success', 'title' => "تمت عملية التخزين"], 200);
+            } else {
+                return response()->json(['icon' => 'error', 'title' => "فشلت عملية التخزين"], 400);
+            }
+        } else {
+            return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ad $ad)
+    public function destroy($id)
     {
-        //
+        $ad = Ad::destroy($id);
+        return response()->json(['icon' => 'success', 'title' => 'Deleted is Successfully'], $ad ? 200 : 400);
     }
 }

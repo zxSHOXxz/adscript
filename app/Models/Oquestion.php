@@ -9,7 +9,7 @@ class Oquestion extends Model
 {
     use HasFactory;
 
-    public function option()
+    public function options()
     {
         return $this->hasMany(Option::class, 'option_id', 'id');
     }

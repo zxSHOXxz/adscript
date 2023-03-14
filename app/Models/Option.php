@@ -9,8 +9,8 @@ class Option extends Model
 {
     use HasFactory;
 
-    public function Oquestion()
+    public function oquestion()
     {
-        return $this->belongsTo(Oquestion::class, 'oquestion_id', 'id');
+        return $this->belongsTo(Oquestion::class, 'oquestions_id', 'id');
     }
 }

@@ -1,0 +1,88 @@
+    <!-- Basic datatable -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">Basic datatable</h5>
+        </div>
+
+        <div class="card-body">
+            The <code>DataTables</code> is a highly flexible tool, based upon the foundations of progressive enhancement,
+            and will add advanced interaction controls to any HTML table. DataTables has most features enabled by default,
+            so all you need to do to use it with your own tables is to call the construction function. Searching, ordering,
+            paging etc goodness will be immediately added to the table, as shown in this example. <span
+                class="fw-semibold">Datatables support all available table styling.</span>
+        </div>
+
+        <table class="table datatable-basic">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Job Title</th>
+                    <th>DOB</th>
+                    <th>Status</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Marth</td>
+                    <td><a href="#">Enright</a></td>
+                    <td>Traffic Court Referee</td>
+                    <td>22 Jun 1972</td>
+                    <td><span class="badge bg-success bg-opacity-10 text-success">Active</span></td>
+                    <td class="text-center">
+                        <div class="d-inline-flex">
+                            <div class="dropdown">
+                                <a href="#" class="text-body" data-bs-toggle="dropdown">
+                                    <i class="ph-list"></i>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a href="#" class="dropdown-item">
+                                        <i class="ph-file-pdf me-2"></i>
+                                        Export to .pdf
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        <i class="ph-file-xls me-2"></i>
+                                        Export to .csv
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        <i class="ph-file-doc me-2"></i>
+                                        Export to .doc
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /basic datatable -->
+
+<!-- badge  -->
+<td><span class="badge bg-success bg-opacity-10 text-success">Active</span></td>
+<!-- end badge -->
+<!-- select -->
+                            <div class="mb-3">
+                                <div class="mb-3 row">
+                                    <label class="col-form-label col-lg-3">المكان</label>
+                                    <div class="col-lg-9">
+                                        <select class="form-control select">
+                                            <optgroup label="الهيدر">
+                                                <option value="header">header</option>
+                                                <option value="CO">Colorado</option>
+                                                <option value="ID">Idaho</option>
+                                                <option value="WY">Wyoming</option>
+                                            </optgroup>
+                                            <optgroup label="Central Time Zone">
+                                                <option value="AL">Alabama</option>
+                                                <option value="IA">Iowa</option>
+                                                <option value="KS">Kansas</option>
+                                                <option value="KY">Kentucky</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+<!-- end select -->

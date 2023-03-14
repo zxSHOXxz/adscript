@@ -1,15 +1,15 @@
 @extends('cms.master')
-@section('title', 'الالوان')
+@section('title', 'النصوص')
 
-@section('tittle_1', ' عرض الﺃلوان ')
-@section('tittle_2', ' عرض الﺃلوان ')
+@section('tittle_1', ' عرض النصوص ')
+@section('tittle_2', ' عرض النصوص ')
 
 
 @section('styles')
     <style>
         .color {
             color: #fff;
-            margin-inline: 15px;
+            padding: 15px;
             width: 35px;
         }
     </style>
@@ -21,23 +21,25 @@
     <!-- Basic datatable -->
     <div class="card">
         <div class="card-header">
-            <h5 class="mb-0">قائمة الﺃلوان</h5>
+            <h5 class="mb-0">قائمة النصوص</h5>
         </div>
 
         <table class="table datatable-basic">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>رقم اللون</th>
+                    <th>محتوى النص</th>
+                    <th>لون النص</th>
                     <th class="text-center">الاجراءات</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($colors as $color)
+                @foreach ($texts as $text)
                     <tr>
-                        <td>{{ $color->id }}</td>
-                        <td class="d-flex justify-content-start">{{ $color->color_number }}
-                            <div class="color" style="background-color: {{ $color->color_number }}">
+                        <td>{{ $text->id }}</td>
+                        <td>{{ $text->content }}</td>
+                        <td class="d-flex justify-content-start gap-2 align-items-center">{{ $text->color->color_number }}
+                            <div class="color" style="background-color: {{ $text->color->color_number }}">
 
                             </div>
                         </td>
@@ -49,23 +51,11 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        {{-- <a href="#" class="dropdown-item">
-                                        <i class="ph-file-pdf me-2"></i>
-                                        Export to .pdf
-                                    </a>
-                                    <a href="#" class="dropdown-item">
-                                        <i class="ph-file-xls me-2"></i>
-                                        Export to .csv
-                                    </a>
-                                    <a href="#" class="dropdown-item">
-                                        <i class="ph-file-doc me-2"></i>
-                                        Export to .doc
-                                    </a> --}}
-                                        <a href="{{ route('color.edit', $color->id) }}" class="dropdown-item">
+                                        <a href="{{ route('texts.edit', $text->id) }}" class="dropdown-item">
                                             <i class="ph-file-doc me-2"></i>
                                             تعديل
                                         </a>
-                                        <a href="#" onclick="performDestroy({{ $color->id }},this)"
+                                        <a href="#" onclick="performDestroy({{ $text->id }},this)"
                                             class="dropdown-item">
                                             <i class="ph-file-doc me-2"></i>
                                             حذف
@@ -91,7 +81,7 @@
 @section('scripts')
     <script>
         function performDestroy(id, referance) {
-            let url = '/cms/admin/color/' + id;
+            let url = '/cms/admin/texts/' + id;
             confirmDestroy(url, referance);
         }
         /* ------------------------------------------------------------------------------
@@ -126,7 +116,7 @@
                     columnDefs: [{
                         orderable: false,
                         width: 100,
-                        targets: [2]
+                        targets: [3]
                     }],
                     dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
                     language: {

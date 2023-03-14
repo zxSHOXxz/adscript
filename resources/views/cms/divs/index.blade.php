@@ -1,15 +1,15 @@
 @extends('cms.master')
-@section('title', 'الالوان')
+@section('title', 'Divs')
 
-@section('tittle_1', ' عرض الﺃلوان ')
-@section('tittle_2', ' عرض الﺃلوان ')
+@section('tittle_1', ' عرض Divs ')
+@section('tittle_2', ' عرض Divs ')
 
 
 @section('styles')
     <style>
         .color {
             color: #fff;
-            margin-inline: 15px;
+            padding: 15px;
             width: 35px;
         }
     </style>
@@ -21,51 +21,41 @@
     <!-- Basic datatable -->
     <div class="card">
         <div class="card-header">
-            <h5 class="mb-0">قائمة الﺃلوان</h5>
+            <h5 class="mb-0">قائمة Divs</h5>
         </div>
 
         <table class="table datatable-basic">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>رقم اللون</th>
-                    <th class="text-center">الاجراءات</th>
+                    <th>محتوى النص</th>
+                    <th>لون النص</th>
+                    <th class="div-center">الاجراءات</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($colors as $color)
+                @foreach ($divs as $div)
                     <tr>
-                        <td>{{ $color->id }}</td>
-                        <td class="d-flex justify-content-start">{{ $color->color_number }}
-                            <div class="color" style="background-color: {{ $color->color_number }}">
+                        <td>{{ $div->id }}</td>
+                        <td>{{ $div->name }}</td>
+                        <td class="d-flex justify-content-start gap-2 align-items-center">{{ $div->color->color_number }}
+                            <div class="color" style="background-color: {{ $div->color->color_number }}">
 
                             </div>
                         </td>
-                        <td class="text-center">
+                        <td class="div-center">
                             <div class="d-inline-flex">
                                 <div class="dropdown">
-                                    <a href="#" class="text-body" data-bs-toggle="dropdown">
+                                    <a href="#" class="div-body" data-bs-toggle="dropdown">
                                         <i class="ph-list"></i>
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        {{-- <a href="#" class="dropdown-item">
-                                        <i class="ph-file-pdf me-2"></i>
-                                        Export to .pdf
-                                    </a>
-                                    <a href="#" class="dropdown-item">
-                                        <i class="ph-file-xls me-2"></i>
-                                        Export to .csv
-                                    </a>
-                                    <a href="#" class="dropdown-item">
-                                        <i class="ph-file-doc me-2"></i>
-                                        Export to .doc
-                                    </a> --}}
-                                        <a href="{{ route('color.edit', $color->id) }}" class="dropdown-item">
+                                        <a href="{{ route('divs.edit', $div->id) }}" class="dropdown-item">
                                             <i class="ph-file-doc me-2"></i>
                                             تعديل
                                         </a>
-                                        <a href="#" onclick="performDestroy({{ $color->id }},this)"
+                                        <a href="#" onclick="performDestroy({{ $div->id }},this)"
                                             class="dropdown-item">
                                             <i class="ph-file-doc me-2"></i>
                                             حذف
@@ -91,7 +81,7 @@
 @section('scripts')
     <script>
         function performDestroy(id, referance) {
-            let url = '/cms/admin/color/' + id;
+            let url = '/cms/admin/divs/' + id;
             confirmDestroy(url, referance);
         }
         /* ------------------------------------------------------------------------------
@@ -126,7 +116,7 @@
                     columnDefs: [{
                         orderable: false,
                         width: 100,
-                        targets: [2]
+                        targets: [3]
                     }],
                     dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
                     language: {

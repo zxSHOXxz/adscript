@@ -1,8 +1,8 @@
 @extends('cms.master')
-@section('title', 'الالوان')
+@section('title', 'Divs')
 
-@section('tittle_1', ' عرض الﺃلوان ')
-@section('tittle_2', ' عرض الﺃلوان ')
+@section('tittle_1', ' تعديل Div ')
+@section('tittle_2', ' تعديل Div ')
 
 
 @section('styles')
@@ -21,63 +21,81 @@
     <!-- Basic datatable -->
     <div class="card">
         <div class="card-header">
-            <h5 class="mb-0">قائمة الﺃلوان</h5>
+            <h5 class="mb-0">اضافة Div</h5>
         </div>
 
-        <table class="table datatable-basic">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>رقم اللون</th>
-                    <th class="text-center">الاجراءات</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($colors as $color)
-                    <tr>
-                        <td>{{ $color->id }}</td>
-                        <td class="d-flex justify-content-start">{{ $color->color_number }}
-                            <div class="color" style="background-color: {{ $color->color_number }}">
-
-                            </div>
-                        </td>
-                        <td class="text-center">
-                            <div class="d-inline-flex">
-                                <div class="dropdown">
-                                    <a href="#" class="text-body" data-bs-toggle="dropdown">
-                                        <i class="ph-list"></i>
-                                    </a>
-
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        {{-- <a href="#" class="dropdown-item">
-                                        <i class="ph-file-pdf me-2"></i>
-                                        Export to .pdf
-                                    </a>
-                                    <a href="#" class="dropdown-item">
-                                        <i class="ph-file-xls me-2"></i>
-                                        Export to .csv
-                                    </a>
-                                    <a href="#" class="dropdown-item">
-                                        <i class="ph-file-doc me-2"></i>
-                                        Export to .doc
-                                    </a> --}}
-                                        <a href="{{ route('color.edit', $color->id) }}" class="dropdown-item">
-                                            <i class="ph-file-doc me-2"></i>
-                                            تعديل
-                                        </a>
-                                        <a href="#" onclick="performDestroy({{ $color->id }},this)"
-                                            class="dropdown-item">
-                                            <i class="ph-file-doc me-2"></i>
-                                            حذف
-                                        </a>
-                                    </div>
+        <div class="card-body">
+            <!-- Right aligned buttons -->
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0"> اضافة Div </h6>
+                </div>
+                <div class="card-body">
+                    <form action="#">
+                        <div class="mb-3">
+                            <label class="form-label">اسم الdiv</label>
+                            <input type="text" name="name" id="name" class="form-control"
+                                placeholder="اسم الdiv">
+                        </div>
+                        <div class="mb-3">
+                            <div class="mb-3 row">
+                                <label class="col-form-label col-lg-3">الخلفية</label>
+                                <div class="col-lg-9">
+                                    <select class="form-control select" id="color_id" name="color_id">
+                                        <option value="{{ $div->color->id }}" selected>{{ $div->color->color_number }}
+                                        </option>
+                                        @foreach ($colors as $color)
+                                            @if ($div->color->id == $color->id)
+                                                @continue
+                                            @else
+                                                <option value="{{ $color->id }}">{{ $color->color_number }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+                        </div>
+                        <div class="d-flex justify-content-end align-items-center">
+                            <a href="{{ route('texts.index') }}" class="btn btn-light">الغاء</a>
+                            <button type="button" onclick="performUpdate({{ $div->id }})"
+                                class="btn btn-primary ms-3"> اضافة <i class="ph-paper-plane-tilt ms-2"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /right aligned buttons -->
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="col-lg-12">
+                <table class="table datatable-basic">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>رقم اللون</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($colors as $color)
+                            <tr>
+                                <td>{{ $color->id }}</td>
+                                <td class="d-flex justify-content-start">{{ $color->color_number }}
+                                    <div class="color" style="background-color: {{ $color->color_number }}">
+
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
     </div>
     <!-- /basic datatable -->
 
@@ -89,10 +107,14 @@
 
 
 @section('scripts')
+    <script src="{{ asset('cms/assets/js/vendor/forms/selects/select2.min.js') }}"></script>
+    <script src="{{ asset('cms/assets/demo/pages/form_select2.js') }}"></script>
     <script>
-        function performDestroy(id, referance) {
-            let url = '/cms/admin/color/' + id;
-            confirmDestroy(url, referance);
+        function performUpdate(id) {
+            let formData = new FormData();
+            formData.append('color_id', document.getElementById('color_id').value);
+            formData.append('name', document.getElementById('name').value);
+            storeRoute('/cms/admin/texts_update/' + id, formData);
         }
         /* ------------------------------------------------------------------------------
          *
