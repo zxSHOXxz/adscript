@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('visitors', function (Blueprint $table) {
-            $table->id();
-            $table->ipAddress('ip_address');
-            $table->timestamps();
+        Schema::table('answers', function (Blueprint $table) {
+            $table->string('content');
         });
     }
 
@@ -23,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('visitors');
+        Schema::table('answers', function (Blueprint $table) {
+            //
+        });
     }
 };

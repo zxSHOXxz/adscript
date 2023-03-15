@@ -465,6 +465,108 @@
                         <li class="nav-item nav-item-submenu">
                             <a href="#" class="nav-link">
                                 <i class="ph-circles-four"></i>
+                                <span>النصوص</span>
+                            </a>
+                            <ul class="nav-group-sub collapse">
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('texts.index') }}" class="nav-link">عرض النصوص</a>
+                                </li>
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('texts.create') }}" class="nav-link">اضافة نص</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link">
+                                <i class="ph-circles-four"></i>
+                                <span>الالوان</span>
+                            </a>
+                            <ul class="nav-group-sub collapse">
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('color.index') }}" class="nav-link">عرض الالوان</a>
+                                </li>
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('color.create') }}" class="nav-link">اضافة لون</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link">
+                                <i class="ph-circles-four"></i>
+                                <span>الاعلانات</span>
+                            </a>
+                            <ul class="nav-group-sub collapse">
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('ads.index') }}" class="nav-link">عرض الاعلانات</a>
+                                </li>
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('ads.create') }}" class="nav-link">اضافة اعلان</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link">
+                                <i class="ph-circles-four"></i>
+                                <span>الاسئلة الاختيارية</span>
+                            </a>
+                            <ul class="nav-group-sub collapse">
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('oquestions.index') }}" class="nav-link">عرض الاسئلة
+                                        الاختيارية</a>
+                                </li>
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('oquestions.create') }}" class="nav-link">اضافة خيار</a>
+                                </li>
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('options.index') }}" class="nav-link">عرض الخيارات</a>
+                                </li>
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('options.create') }}" class="nav-link">اضافة خيار</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link">
+                                <i class="ph-circles-four"></i>
+                                <span>اسئلة الادخال</span>
+                            </a>
+                            <ul class="nav-group-sub collapse">
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('iquestions.index') }}" class="nav-link">عرض الاسئلة</a>
+                                </li>
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('iquestions.create') }}" class="nav-link">اضافة سؤال</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link">
+                                <i class="ph-circles-four"></i>
+                                <span>الزوار</span>
+                            </a>
+                            <ul class="nav-group-sub collapse">
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('visitors.index') }}" class="nav-link">عرض الزوار</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link">
+                                <i class="ph-circles-four"></i>
+                                <span>Dive</span>
+                            </a>
+                            <ul class="nav-group-sub collapse">
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('divs.index') }}" class="nav-link">عرض ال Divs</a>
+                                </li>
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('divs.create') }}" class="nav-link">اضافة Div</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link">
+                                <i class="ph-circles-four"></i>
                                 <span>التحكم في الفرونت</span>
                             </a>
                             <ul class="nav-group-sub collapse">

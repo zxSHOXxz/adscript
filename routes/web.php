@@ -8,6 +8,7 @@ use App\Http\Controllers\IquestionController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\OquestionController;
 use App\Http\Controllers\TextController;
+use App\Http\Controllers\VisitorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('front.index');
 // });
-    Route::resource('index', FrontController::class);
+Route::resource('index', FrontController::class);
 
 Route::prefix('cms/admin')->group(function () {
     Route::view('/', 'cms.index')->name('dashboard');
@@ -49,4 +50,6 @@ Route::prefix('cms/admin')->group(function () {
 
     Route::resource('options', OptionController::class);
     Route::post('options_update/{id}', [OptionController::class, 'update'])->name('options_update');
+
+    Route::resource('visitors', VisitorController::class);
 });

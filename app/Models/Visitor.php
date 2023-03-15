@@ -11,7 +11,6 @@ class Visitor extends Model
 
     public function answers()
     {
-        return $this->hasMany(Answer::class, 'aswer_id', 'id');
+        return $this->hasMany(Answer::class, 'visitor_id', 'id');
     }
-
 }
