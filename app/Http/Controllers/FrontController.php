@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
+use App\Models\Div;
 use App\Models\Iquestion;
+use App\Models\NavItem;
 use App\Models\Oquestion;
+use App\Models\Text;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -16,9 +19,12 @@ class FrontController extends Controller
      */
     public function index()
     {
-        $oquestions = Oquestion::all();
-        $iquestions = Iquestion::all();
-        return view('front.index', compact('oquestions', 'iquestions'));
+        $oquestions = Oquestion::orderBy('id', 'asc')->get();
+        $iquestions = Iquestion::orderBy('id', 'asc')->get();
+        $items = NavItem::all();
+        $divs = Div::all();
+        $texts = Text::all();
+        return view('front.index', compact('oquestions', 'iquestions', 'divs', 'items', 'texts'));
     }
 
     /**

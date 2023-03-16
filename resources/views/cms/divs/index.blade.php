@@ -28,8 +28,9 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>محتوى النص</th>
-                    <th>لون النص</th>
+                    <th>الاسم</th>
+                    <th>محتوى Div</th>
+                    <th>لون Div</th>
                     <th class="div-center">الاجراءات</th>
                 </tr>
             </thead>
@@ -38,6 +39,7 @@
                     <tr>
                         <td>{{ $div->id }}</td>
                         <td>{{ $div->name }}</td>
+                        <td>{{ $div->content }}</td>
                         <td class="d-flex justify-content-start gap-2 align-items-center">{{ $div->color->color_number }}
                             <div class="color" style="background-color: {{ $div->color->color_number }}">
 

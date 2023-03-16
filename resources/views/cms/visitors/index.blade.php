@@ -40,11 +40,11 @@
             <tbody>
                 @foreach ($visitors as $visitor)
                     <tr>
-                        <td>{{ $visitor->id }}</td>
-                        <td>{{ $visitor->ip_address }}</td>
+                        <td>{{ $visitor->id ?? null }}</td>
+                        <td>{{ $visitor->ip_address ?? null }}</td>
                         @foreach ($visitor->answers as $answer)
                             @if ($answer->iquestion_id != 1)
-                                <td>{{ $answer->content }}</td>
+                                <td>{{ $answer->content ?? 'null' }}</td>
                             @endif
                         @endforeach
                         @foreach ($visitor->answers as $answer)
@@ -53,7 +53,7 @@
                                     $q = $oquestions->where('id', $answer->oquestion_id)->first();
                                     $option = $q->options->where('id', $answer->content)->first();
                                 @endphp
-                                <td>{{ $option->content }}</td>
+                                <td>{{ $option->content ?? 'null' }}</td>
                             @endif
                         @endforeach
                     </tr>

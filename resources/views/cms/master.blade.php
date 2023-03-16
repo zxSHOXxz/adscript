@@ -567,6 +567,20 @@
                         <li class="nav-item nav-item-submenu">
                             <a href="#" class="nav-link">
                                 <i class="ph-circles-four"></i>
+                                <span>عناصر الناف بار</span>
+                            </a>
+                            <ul class="nav-group-sub collapse">
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('navitems.index') }}" class="nav-link">عرض العناصر</a>
+                                </li>
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('navitems.create') }}" class="nav-link">اضافة عنصر</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link">
+                                <i class="ph-circles-four"></i>
                                 <span>التحكم في الفرونت</span>
                             </a>
                             <ul class="nav-group-sub collapse">

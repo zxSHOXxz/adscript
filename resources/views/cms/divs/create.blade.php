@@ -34,7 +34,13 @@
                     <form action="#">
                         <div class="mb-3">
                             <label class="form-label">اسم الdiv</label>
-                            <input type="text" name="name" id="name" class="form-control" placeholder="اسم الdiv">
+                            <input type="text" name="name" id="name" class="form-control"
+                                placeholder="اسم الdiv">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold"> المحتوى </label>
+                            <textarea rows="3" cols="3" class="form-control elastic" id="content" name="content" placeholder="محتوى "
+                                style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 84px;"></textarea>
                         </div>
                         <div class="mb-3">
                             <div class="mb-3 row">
@@ -107,6 +113,7 @@
             let formData = new FormData();
             formData.append('color_id', document.getElementById('color_id').value);
             formData.append('name', document.getElementById('name').value);
+            formData.append('content', document.getElementById('content').value);
             store('/cms/admin/divs', formData);
         }
         /* ------------------------------------------------------------------------------

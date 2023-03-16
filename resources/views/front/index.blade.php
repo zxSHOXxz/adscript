@@ -19,21 +19,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{-- <link rel="icon" href="https://i.imgur.com/i0yGkZL.png"> --}}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="{{ asset('cms/assets/css/all.min.css') }}" id="stylesheet" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('front/css/style.css') }}">
 
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css">
 
-
     <link href="{{ asset('cms/assets/fonts/inter/inter.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('cms/assets/icons/phosphor/styles.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('cms/assets/css/all.min.css') }}" id="stylesheet" rel="stylesheet" type="text/css">
 
     <style>
         * {
@@ -52,6 +50,10 @@
         ol,
         ul {
             list-style: none;
+        }
+
+        body {
+            overflow-y: auto !important;
         }
 
         body,
@@ -98,38 +100,33 @@
 
 </head>
 
-
-
-
-
-
 <body>
-    <header>
+    @php
+        $navBarBackGround = $divs->where('name', 'navbar')->first();
+        $noteBackGround = $divs->where('name', 'note')->first();
+        $optionBackGround = $divs->where('name', 'options')->first();
+    @endphp
+    <header style="background-color: {{ $navBarBackGround->color->color_number }}">
         <div class="container-fluid">
-            <nav class="nav align-items-center py-2 px-5">
+            <nav style="" class="nav align-items-center py-2 px-5">
                 <div class="logo">
-                    <a href="https://khabarnws.com/">
-                        <img src="{{ asset('front/img/love.png') }}" alt="logo">
+                    <a href="{{ route('index.index') }}">
+                        @php
+                            $logoHref = $divs->where('name', 'logo')->first();
+                        @endphp
+                        <img src="{{ $logoHref->content }}" alt="logo">
                     </a>
                 </div>
                 <div class="nav-links w-75">
                     <ul class="nav-link d-flex flex-md-row flex-sm-column flex-wrap gap-1 m-0">
-                        <li class="nav-item bg-light p-2 rounded-2 text-wrap">
-                            <a href="https://khabarnws.com/" style="color: #472370;">فرصة ذهبية للحصول على مكافأة
-                                مالية</a>
-                        </li>
-                        <li class="nav-item bg-light p-2 rounded-2 text-wrap">
-                            <a href="https://khabarnws.com/" style="color: #472370;">فرصة ذهبية للحصول على مكافأة
-                                مالية</a>
-                        </li>
-                        <li class="nav-item bg-light p-2 rounded-2 text-wrap">
-                            <a href="https://khabarnws.com/" style="color: #472370;">فرصة ذهبية للحصول على مكافأة
-                                مالية</a>
-                        </li>
-                        <li class="nav-item bg-light p-2 rounded-2 text-wrap">
-                            <a href="https://khabarnws.com/" style="color: #472370;">فرصة ذهبية للحصول على مكافأة
-                                مالية</a>
-                        </li>
+                        @foreach ($items as $item)
+                            <li class="nav-item bg-light p-2 rounded-2 text-wrap"
+                                style="background-color: {{ $item->background }} !important">
+                                <a href="{{ $item->href }}" style="color: {{ $item->color }};">فرصة
+                                    ذهبية للحصول على مكافأة
+                                    مالية</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
 
@@ -154,16 +151,22 @@
                 <div class="row">
                     <div class="col justify-content-center p-4">
                         <div class="row">
-                            <p class="text-center pt-2 fw-bolder"> مساعدات مالية للشباب وللأسر المتعففة </p>
+                            @php
+                                $text1 = $texts->where('id', '1')->first();
+                                $text2 = $texts->where('id', '2')->first();
+                                $text3 = $texts->where('id', '3')->first();
+                                $text4 = $texts->where('id', '4')->first();
+                                $text5 = $texts->where('id', '5')->first();
+                            @endphp
+                            <p class="text-center pt-2 fw-bolder"> {{ $text1->content }} </p>
                         </div>
                         <div class="row">
-                            <p class="text-center pt-2"> تابع صفحتنا عبر الفيس بوك لكل يصلك كل جديد عن المساعدات والمنح
-                                والكابونات </p>
+                            <p class="text-center pt-2"> {{ $text2->content }} </p>
                         </div>
                     </div>
                 </div>
                 {{-- صفحات الفيس  --}}
-                {{-- <div class="row">
+                <div class="row">
                     <div class="row d-flex justify-content-center p-5">
                         <div id="fb-root"></div>
                         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v11.0"
@@ -179,16 +182,15 @@
                                 data-colorscheme="dark"></div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 {{-- ثاني نص --}}
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-8 col-sm-10 tt">
-                            <div class="gutschein">
+                            <div class="gutschein"
+                                style="background-color: {{ $noteBackGround->color->color_number }}">
                                 <p>
-                                    سيقوم فريق البحث الميداني الخاص بالجمعية بالتواصل عبر أرقامكم المرسلة ومناطق سكنكم
-                                    لدراسة الحالة
-                                    وتقييمها
+                                    {{ $text3->content }}
                                 </p>
                             </div>
                         </div>
@@ -199,7 +201,7 @@
                     <div class="row">
                         <div id="aufforderung" class="d-flex justify-content-center align-items-center p-2">
                             <p class="text-center fw-bolder">
-                                الرجاء الإجابة على الأسئلة التالية في الاسفل
+                                {{ $text4->content }}
                             </p>
                         </div>
                     </div>
@@ -231,8 +233,8 @@
                                                                     name="{{ $option->id }}"
                                                                     value="{{ $option->id }}"
                                                                     data-q="{{ $oquestion->id }}">
-                                                                <label
-                                                                    for="{{ $option->id }}">{{ $option->content }}</label>
+                                                                <label for="{{ $option->id }}"
+                                                                    style="background-color: {{ $optionBackGround->color->color_number }}">{{ $option->content }}</label>
                                                             </div>
                                                         @endforeach
                                                     </div>
@@ -244,7 +246,7 @@
                                         <div class="row justify-content-center">
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="question">
-                                                    <h3 class="text-center"> املأ الاستمارة في الأسفل </h3>
+                                                    <h3 class="text-center"> {{ $text5->content }}</h3>
                                                     @foreach ($iquestions as $iquestion)
                                                         <div class="input-group p-2">
                                                             <span
@@ -264,8 +266,14 @@
                                     </div>
                                     <div class="row py-5 submit">
                                         <div class="col d-flex justify-content-center">
-                                            <button type="submit" class="btn btn-success" disabled>تأكيد
-                                                الإجابات</button>
+                                            @php
+                                                $btn = $divs->where('id', '6')->first();
+                                            @endphp
+                                            <button type="submit" class="btn btn-success"
+                                                style="background-color: {{ $btn->color->color_number }} !important"
+                                                disabled>
+                                                {{ $btn->content }}
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -276,12 +284,15 @@
                 {{-- الاسئلة --}}
 
                 {{-- التعليقات --}}
-                <div class="container">
+                <div class="container p-5">
                     <div class="row justify-content-center">
-                        <div class="col-md-8 col-sm-12 ">
-
-
-
+                        <div class="col-md-8 col-sm-12 p-5">
+                            <div id="fb-root"></div>
+                            <script async defer crossorigin="anonymous"
+                                src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v16.0&appId=168488442265796&autoLogAppEvents=1"
+                                nonce="5e6pYZhX"></script>
+                            <div class="fb-comments" data-href="https://gazatodaycom.com" data-width="100%"
+                                data-numposts="70"></div>
                         </div>
                     </div>
                 </div>

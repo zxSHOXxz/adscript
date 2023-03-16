@@ -16,9 +16,9 @@ class VisitorController extends Controller
      */
     public function index()
     {
-        $iquestions = Iquestion::orderBy('id', 'desc')->get();
+        $iquestions = Iquestion::orderBy('id', 'asc')->get();
         $oquestions = Oquestion::with('options')->orderBy('id', 'asc')->get();
-        $visitors = Visitor::with('answers')->get();
+        $visitors = Visitor::with('answers')->orderBy('id', 'desc')->get();
         // $visitors = Visitor::with(['answers' => function ($query) {
         //     $query->where('oquestion_id', '!=' , '1');
         // }])->get();

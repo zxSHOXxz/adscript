@@ -94,6 +94,6 @@ class IquestionController extends Controller
     public function destroy($id)
     {
         $iquestion = Iquestion::destroy($id);
-        return response()->json(['icon' => 'success', 'title' => 'Deleted is Successfully'], $id ? 200 : 400);
+        return response()->json(['icon' => 'success', 'title' => 'Deleted is Successfully'], $iquestion ? 200 : 400);
     }
 }

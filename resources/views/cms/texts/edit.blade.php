@@ -33,13 +33,18 @@
                 <div class="card-body">
                     <form action="#">
                         <div class="mb-3">
+                            <label class="form-label">الاسم</label>
+                            <input type="text" id="name" name="name" class="form-control"
+                                value="{{ $text->name }}" placeholder="الاسم">
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label fw-bold"> محتوى نص </label>
                             <textarea rows="3" cols="3" class="form-control elastic" id="content" name="content"
                                 placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 84px;">{{ $text->content }}</textarea>
                         </div>
                         <div class="mb-3">
                             <div class="mb-3 row">
-                                <label class="col-form-label col-lg-3">الخلفية</label>
+                                <label class="col-form-label col-lg-3">اللون</label>
                                 <div class="col-lg-9">
                                     <select class="form-control select" id="color_id" name="color_id">
                                         <option value="{{ $text->color->id }}" selected>{{ $text->color->color_number }}
@@ -57,8 +62,8 @@
                         </div>
                         <div class="d-flex justify-content-end align-items-center">
                             <a href="{{ route('texts.index') }}" class="btn btn-light">الغاء</a>
-                            <button type="button" onclick="performUpdate({{ $text->id }})" class="btn btn-primary ms-3"> اضافة <i
-                                    class="ph-paper-plane-tilt ms-2"></i></button>
+                            <button type="button" onclick="performUpdate({{ $text->id }})"
+                                class="btn btn-primary ms-3"> اضافة <i class="ph-paper-plane-tilt ms-2"></i></button>
                         </div>
                     </form>
                 </div>
@@ -114,6 +119,7 @@
             let formData = new FormData();
             formData.append('color_id', document.getElementById('color_id').value);
             formData.append('content', document.getElementById('content').value);
+            formData.append('name', document.getElementById('name').value);
             storeRoute('/cms/admin/texts_update/' + id, formData);
         }
         /* ------------------------------------------------------------------------------

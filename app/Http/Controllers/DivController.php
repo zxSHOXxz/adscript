@@ -42,6 +42,7 @@ class DivController extends Controller
             $div = new Div();
             $div->color_id = $request->get('color_id');
             $div->name = $request->get('name');
+            $div->content = $request->get('content');
             $isSaved = $div->save();
             if ($isSaved) {
                 return response()->json(['icon' => 'success', 'title' => "تمت عملية التخزين"], 200);
@@ -67,8 +68,8 @@ class DivController extends Controller
     public function edit($id)
     {
         $colors = Color::all();
-        $divs = Div::findOrFail($id);
-        return view('cms.texts.edit', compact('divs', 'colors'));
+        $div = Div::findOrFail($id);
+        return view('cms.divs.edit', compact('div', 'colors'));
     }
 
     /**
@@ -86,9 +87,10 @@ class DivController extends Controller
         if (!$validator->fails()) {
             $div->color_id = $request->get('color_id');
             $div->name = $request->get('name');
+            $div->content = $request->get('content');
             $isSaved = $div->save();
             if ($isSaved) {
-                return ['redirect' => route('texts.index')];
+                return ['redirect' => route('divs.index')];
                 return response()->json(['icon' => 'success', 'title' => "تمت عملية التخزين"], 200);
             } else {
                 return response()->json(['icon' => 'error', 'title' => "فشلت عملية التخزين"], 400);

@@ -1,16 +1,16 @@
 @extends('cms.master')
-@section('title', 'النصوص')
+@section('title', 'Nav Bar Items')
 
-@section('tittle_1', ' عرض النصوص ')
-@section('tittle_2', ' عرض النصوص ')
+@section('tittle_1', 'عناصر الناف بار')
+@section('tittle_2', 'عناصر الناف بار')
 
 
 @section('styles')
     <style>
         .color {
             color: #fff;
-            padding: 15px;
-            width: 35px;
+            padding: 5px 15px;
+            margin-inline: 5px;
         }
     </style>
 @endsection
@@ -21,29 +21,34 @@
     <!-- Basic datatable -->
     <div class="card">
         <div class="card-header">
-            <h5 class="mb-0">قائمة النصوص</h5>
+            <h5 class="mb-0">قائمة عناصر الناف بار</h5>
         </div>
 
         <table class="table datatable-basic">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>محتوى النص</th>
-                    <th>اسم النص</th>
-                    <th>لون النص</th>
+                    <th>المحتوى</th>
+                    <th>الرابط</th>
+                    <th>الخلفية</th>
+                    <th>لون الخط</th>
                     <th class="text-center">الاجراءات</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($texts as $text)
+                @foreach ($items as $item)
                     <tr>
-                        <td>{{ $text->id }}</td>
-                        <td>{{ $text->content }}</td>
-                        <td>{{ $text->name }}</td>
-                        <td class="d-flex justify-content-start gap-2 align-items-center">{{ $text->color->color_number }}
-                            <div class="color" style="background-color: {{ $text->color->color_number }}">
+                        <td>{{ $item->id }}</td>
+                        <td class="">{{ $item->content }}</td>
+                        <td class="">{{ $item->href }}</td>
+                        <td>{{ $item->background }}
+                            <span class="color" style="background-color: {{ $item->background }};">
+                            </span>
+                        </td>
 
-                            </div>
+                        <td>{{ $item->color }}
+                            <span class="color" style="background-color: {{ $item->color }}">
+                            </span>
                         </td>
                         <td class="text-center">
                             <div class="d-inline-flex">
@@ -53,9 +58,26 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="{{ route('texts.edit', $text->id) }}" class="dropdown-item">
+                                        {{-- <a href="#" class="dropdown-item">
+                                        <i class="ph-file-pdf me-2"></i>
+                                        Export to .pdf
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        <i class="ph-file-xls me-2"></i>
+                                        Export to .csv
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        <i class="ph-file-doc me-2"></i>
+                                        Export to .doc
+                                    </a> --}}
+                                        <a href="{{ route('navitems.edit', $item->id) }}" class="dropdown-item">
                                             <i class="ph-file-doc me-2"></i>
                                             تعديل
+                                        </a>
+                                        <a href="#" onclick="performDestroy({{ $item->id }},this)"
+                                            class="dropdown-item">
+                                            <i class="ph-file-doc me-2"></i>
+                                            حذف
                                         </a>
                                     </div>
                                 </div>
@@ -78,7 +100,7 @@
 @section('scripts')
     <script>
         function performDestroy(id, referance) {
-            let url = '/cms/admin/texts/' + id;
+            let url = '/cms/admin/navitems/' + id;
             confirmDestroy(url, referance);
         }
         /* ------------------------------------------------------------------------------
@@ -113,7 +135,7 @@
                     columnDefs: [{
                         orderable: false,
                         width: 100,
-                        targets: [3]
+                        targets: [4]
                     }],
                     dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
                     language: {

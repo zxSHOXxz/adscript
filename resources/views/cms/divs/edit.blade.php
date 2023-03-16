@@ -34,8 +34,13 @@
                     <form action="#">
                         <div class="mb-3">
                             <label class="form-label">اسم الdiv</label>
-                            <input type="text" name="name" id="name" class="form-control"
-                                placeholder="اسم الdiv">
+                            <input type="text" name="name" id="name" class="form-control" placeholder="اسم الdiv"
+                                value="{{ $div->name }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">اسم الdiv</label>
+                            <input type="text" name="content" id="content" class="form-control" placeholder="المحتوى"
+                                value="{{ $div->content }}">
                         </div>
                         <div class="mb-3">
                             <div class="mb-3 row">
@@ -56,7 +61,7 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-end align-items-center">
-                            <a href="{{ route('texts.index') }}" class="btn btn-light">الغاء</a>
+                            <a href="{{ route('divs.index') }}" class="btn btn-light">الغاء</a>
                             <button type="button" onclick="performUpdate({{ $div->id }})"
                                 class="btn btn-primary ms-3"> اضافة <i class="ph-paper-plane-tilt ms-2"></i></button>
                         </div>
@@ -95,7 +100,7 @@
 
         </div>
     </div>
-
+    <a></a>
     </div>
     <!-- /basic datatable -->
 
@@ -114,7 +119,8 @@
             let formData = new FormData();
             formData.append('color_id', document.getElementById('color_id').value);
             formData.append('name', document.getElementById('name').value);
-            storeRoute('/cms/admin/texts_update/' + id, formData);
+            formData.append('content', document.getElementById('content').value);
+            storeRoute('/cms/admin/divs_update/' + id, formData);
         }
         /* ------------------------------------------------------------------------------
          *

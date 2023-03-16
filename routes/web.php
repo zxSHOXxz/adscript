@@ -5,10 +5,12 @@ use App\Http\Controllers\ColorController;
 use App\Http\Controllers\DivController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\IquestionController;
+use App\Http\Controllers\NavItemController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\OquestionController;
 use App\Http\Controllers\TextController;
 use App\Http\Controllers\VisitorController;
+use App\Models\NavItem;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +24,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('front.index');
-// });
 Route::resource('index', FrontController::class);
 
 Route::prefix('cms/admin')->group(function () {
@@ -50,6 +49,9 @@ Route::prefix('cms/admin')->group(function () {
 
     Route::resource('options', OptionController::class);
     Route::post('options_update/{id}', [OptionController::class, 'update'])->name('options_update');
+
+    Route::resource('navitems', NavItemController::class);
+    Route::post('navitems_update/{id}', [NavItemController::class, 'update'])->name('navitems_update');
 
     Route::resource('visitors', VisitorController::class);
 });

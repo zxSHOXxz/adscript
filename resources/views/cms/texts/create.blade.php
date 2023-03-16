@@ -33,13 +33,17 @@
                 <div class="card-body">
                     <form action="#">
                         <div class="mb-3">
+                            <label class="form-label">الاسم</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="الاسم">
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label fw-bold"> محتوى نص </label>
                             <textarea rows="3" cols="3" class="form-control elastic" id="content" name="content"
-                                placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 84px;"></textarea>
+                                placeholder="محتوى النص" style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 84px;"></textarea>
                         </div>
                         <div class="mb-3">
                             <div class="mb-3 row">
-                                <label class="col-form-label col-lg-3">الخلفية</label>
+                                <label class="col-form-label col-lg-3">اللون</label>
                                 <div class="col-lg-9">
                                     <select class="form-control select" id="color_id" name="color_id">
                                         @foreach ($colors as $color)
@@ -108,6 +112,7 @@
             let formData = new FormData();
             formData.append('color_id', document.getElementById('color_id').value);
             formData.append('content', document.getElementById('content').value);
+            formData.append('name', document.getElementById('name').value);
             store('/cms/admin/texts', formData);
         }
         /* ------------------------------------------------------------------------------
