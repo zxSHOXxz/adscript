@@ -16,7 +16,11 @@ class OptionController extends Controller
         $options = Option::with('oquestion')->get();
         return view('cms.options.index', compact('options'));
     }
-
+    public function indexOqOp($id)
+    {
+        $options = Option::with('oquestion')->where('oquestions_id', $id)->get();
+        return view('cms.options.index', compact('options'));
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -74,7 +78,7 @@ class OptionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $validator = validator($request->all(), [
             'content' => 'required',

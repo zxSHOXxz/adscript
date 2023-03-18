@@ -8,12 +8,14 @@ use App\Http\Controllers\IquestionController;
 use App\Http\Controllers\NavItemController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\OquestionController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\TextController;
 use App\Http\Controllers\VisitorController;
-use App\Models\NavItem;
 use Illuminate\Support\Facades\Route;
 
-/*
+/*  
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -24,10 +26,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [FrontController::class, 'index'])->name('front');
+Route::get('/final', [FrontController::class, 'final'])->name('front.final');
+
 Route::resource('index', FrontController::class);
 
-Route::prefix('cms/admin')->group(function () {
-    Route::view('/', 'cms.index')->name('dashboard');
+Route::prefix('cms/admin')->middleware(['auth:web', 'auth.session', 'verified'])->group(function () {
 
     Route::resource('color', ColorController::class);
     Route::post('colors_update/{color}', [ColorController::class, 'update'])->name('colors_update');
@@ -48,10 +52,29 @@ Route::prefix('cms/admin')->group(function () {
     Route::post('oquestions_update/{id}', [OquestionController::class, 'update'])->name('oquestions_update');
 
     Route::resource('options', OptionController::class);
+    Route::get('oquestionsOp/{id}', [OptionController::class, 'indexOqOp'])->name('oquestionsOp');
     Route::post('options_update/{id}', [OptionController::class, 'update'])->name('options_update');
 
     Route::resource('navitems', NavItemController::class);
     Route::post('navitems_update/{id}', [NavItemController::class, 'update'])->name('navitems_update');
 
     Route::resource('visitors', VisitorController::class);
+
+    Route::resource('roles', RoleController::class);
+    Route::post('roles_update/{id}', [RoleController::class, 'update'])->name('roles_update');
+
+    Route::resource('permissions', PermissionController::class);
+    Route::post('permissions_update/{id}', [PermissionController::class, 'update'])->name('permissions_update');
+
+    Route::resource('roles.permissions', RolePermissionController::class);
+});
+
+Route::middleware([
+    'auth:sanctum',
+
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('auth.login');
+    })->name('dashboard');
 });

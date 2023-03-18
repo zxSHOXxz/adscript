@@ -20,8 +20,11 @@
 
     <!-- Basic datatable -->
     <div class="card">
-        <div class="card-header">
+        <div class="card-header d-flex justify-content-between">
             <h5 class="mb-0">قائمة الﺃسئلة</h5>
+            <a href="{{ route('options.create') }}" type="submit" class="btn btn-md btn-outline-success">إضافة
+                خيار
+                جديد</a>
         </div>
 
         <table class="table datatable-basic">
@@ -29,6 +32,7 @@
                 <tr>
                     <th>#</th>
                     <th>محتوى السؤال</th>
+                    <th>الخيارات</th>
                     <th class="text-center">الاجراءات</th>
                 </tr>
             </thead>
@@ -37,6 +41,9 @@
                     <tr>
                         <td>{{ $oquestion->id }}</td>
                         <td>{{ $oquestion->content }}</td>
+                        <td><a href="{{ route('oquestionsOp', $oquestion->id) }}"
+                                class="btn btn-info">({{ $oquestion->options_count }})
+                                الخيارات</a> </td>
                         <td class="text-center">
                             <div class="d-inline-flex">
                                 <div class="dropdown">

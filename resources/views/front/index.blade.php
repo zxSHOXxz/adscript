@@ -19,19 +19,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{-- <link rel="icon" href="https://i.imgur.com/i0yGkZL.png"> --}}
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <link href="{{ asset('cms/assets/css/all.min.css') }}" id="stylesheet" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
-
     <link rel="stylesheet" href="{{ asset('front/css/style.css') }}">
-
+    <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css">
-
-    <link href="{{ asset('cms/assets/fonts/inter/inter.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('cms/assets/icons/phosphor/styles.min.css') }}" rel="stylesheet" type="text/css">
 
     <style>
         * {
@@ -54,6 +48,7 @@
 
         body {
             overflow-y: auto !important;
+            direction: rtl !important;
         }
 
         body,
@@ -71,6 +66,30 @@
             font-family: 'DroidArabicKufiRegular';
             font-weight: normal;
             font-style: normal;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #a9a9a9;
+            border-radius: 10px;
+            border: 3px solid #fff;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #f5f5f5;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #a9a9a9;
+            border-radius: 10px;
         }
 
         p {
@@ -105,6 +124,7 @@
         $navBarBackGround = $divs->where('name', 'navbar')->first();
         $noteBackGround = $divs->where('name', 'note')->first();
         $optionBackGround = $divs->where('name', 'options')->first();
+        $confirmBtn = $divs->where('name', 'confirmBtn')->first();
     @endphp
     <header style="background-color: {{ $navBarBackGround->color->color_number }}">
         <div class="container-fluid">
@@ -114,7 +134,7 @@
                         @php
                             $logoHref = $divs->where('name', 'logo')->first();
                         @endphp
-                        <img src="{{ $logoHref->content }}" alt="logo">
+                        <img src="{{ asset('/storage/images/logo/') }}/{{ $logoHref->image }}" alt="logo">
                     </a>
                 </div>
                 <div class="nav-links w-75">
@@ -162,6 +182,7 @@
                         </div>
                         <div class="row">
                             <p class="text-center pt-2"> {{ $text2->content }} </p>
+                            <p class="text-center pt-2"> {{ $text3->content }} </p>
                         </div>
                     </div>
                 </div>
@@ -190,7 +211,7 @@
                             <div class="gutschein"
                                 style="background-color: {{ $noteBackGround->color->color_number }}">
                                 <p>
-                                    {{ $text3->content }}
+                                    {{ $text4->content }}
                                 </p>
                             </div>
                         </div>
@@ -201,7 +222,7 @@
                     <div class="row">
                         <div id="aufforderung" class="d-flex justify-content-center align-items-center p-2">
                             <p class="text-center fw-bolder">
-                                {{ $text4->content }}
+
                             </p>
                         </div>
                     </div>
@@ -267,7 +288,7 @@
                                     <div class="row py-5 submit">
                                         <div class="col d-flex justify-content-center">
                                             @php
-                                                $btn = $divs->where('id', '6')->first();
+                                                $btn = $divs->where('name', 'submetBtn')->first();
                                             @endphp
                                             <button type="submit" class="btn btn-success"
                                                 style="background-color: {{ $btn->color->color_number }} !important"
@@ -281,6 +302,49 @@
                         </div>
                     </div>
                 </form>
+                @php
+                    $rulesMessage = $divs->where('name', 'rulesMessage')->first();
+                    $facebookMessage = $divs->where('name', 'facebookMessage')->first();
+                    $whatsappMessage = $divs->where('name', 'whatsappMessage')->first();
+                    $telegramMessage = $divs->where('name', 'telegramMessage')->first();
+                    $confirmBtn = $divs->where('name', 'confirmBtn')->first();
+                    $faceBookComment = $divs->where('name', 'faceBookComment')->first();
+                @endphp
+                <div class="share d-none">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 col-sm-10 tt">
+                                <p class="text-center py-5">
+                                    {{ $rulesMessage->content }}
+                                </p>
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col d-flex justify-content-center">
+                                        <a class="btn btn-dark"
+                                            href="https://www.facebook.com/sharer/sharer.php?u={{ $facebookMessage->href }}&quote={{ $facebookMessage->content }}"
+                                            target="_blank" rel="noopener noreferrer">مشاركة عبر الفيسبوك</a>
+                                    </div>
+                                    <div class="col d-flex justify-content-center">
+                                        <a class="btn btn-dark"
+                                            href="https://telegram.me/share/url?url={{ $telegramMessage->href }}&text={{ $telegramMessage->content }}"
+                                            target="_blank" rel="noopener noreferrer">مشاركة عبر تيلجرام</a>
+                                    </div>
+                                    <div class="col d-flex justify-content-center">
+                                        <a class="btn btn-dark"
+                                            href="https://api.whatsapp.com/send?text={{ $whatsappMessage->content }}{{ $whatsappMessage->href }}"
+                                            target="_blank" rel="noopener noreferrer">مشاركة عبر الواتساب</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="b text-center py-5">
+                            <button class="btn btn-dark"
+                                style="background-color: {{ $confirmBtn->color->color_number }}"
+                                data-hh="{{ route('front.final') }}">
+                                {{ $confirmBtn->content }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 {{-- الاسئلة --}}
 
                 {{-- التعليقات --}}
@@ -331,6 +395,8 @@
 
         <script>
             const form = document.querySelector('form');
+            const share = document.querySelector('.share');
+            const confirmBtn = document.querySelector('.share button')
             const inputs = form.querySelectorAll('input');
             const submit = document.querySelector('.submit button')
             let isAllFilled = true;
@@ -375,7 +441,65 @@
                 question.forEach(element => {
                     formData.append(element.name, element.value);
                 });
-                store('/index', formData);
+
+                function storee(url, data) {
+                    axios.post(url, data)
+                        .then(function(response) {
+                            showMessage(response.data);
+                            form.classList.add('d-none');
+                            share.classList.remove('d-none');
+                            clearForm();
+                            clearAndHideErrors();
+
+                        })
+                        .catch(function(error) {
+
+                            if (error.response.data.errors !== undefined) {
+                                showErrorMessages(error.response.data.errors);
+                            } else {
+
+                                showMessage(error.response.data);
+                            }
+                        });
+
+                }
+                let count = localStorage.getItem('count');
+                if (!count) {
+                    // إذا لم يكن العدد موجوداً، يتم تعيينه على 0
+                    count = 0;
+                } else {
+                    // إذا كان العدد موجوداً، يتم تحويله إلى رقم
+                    count = parseInt(count);
+                }
+
+                // تحديث العدد بناء على الزر الذي تم الضغط عليه
+                function updateCount(buttonNumber) {
+                    count++;
+                    localStorage.setItem('count', count);
+                }
+                confirmBtn.addEventListener('click', _ => {
+                    if (count === 5) {
+                        // إذا كان العدد يساوي 5، يتم التحويل إلى الصفحة المطلوبة
+                        window.location.href = confirmBtn.dataset.hh;
+                    } else {
+                        // إذا لم يصل العدد إلى 5، يتم إظهار رسالة باستخدام SweetAlert2
+                        const remaining = 5 - count;
+                        Swal.fire({
+                            icon: 'warninig',
+                            title: 'لم تقم بمشاركات كافية',
+                            text: `متبقي ${remaining} مشاركة`,
+                        });
+                    }
+                })
+
+                // تعيين الدالة `updateCount` كحدث للزر عند الضغط عليه
+                const btns = document.querySelectorAll('.share a');
+                btns.forEach(element => {
+                    element.addEventListener('click', function() {
+                        updateCount(1);
+                    });
+                });
+                storee('/index', formData);
             });
         </script>
 

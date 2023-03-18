@@ -371,7 +371,8 @@
                                 class="w-32px h-32px rounded-pill" alt="">
                             <span class="status-indicator bg-success"></span>
                         </div>
-                        <span class="d-none d-lg-inline-block mx-lg-2">Victoria</span>
+                        <span
+                            class="d-none d-lg-inline-block mx-lg-2">{{ Auth::check() ? Auth::user()->name : null }}</span>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-end">
@@ -462,6 +463,38 @@
                         <li class="nav-item-header">
                             <div class="text-uppercase fs-sm lh-sm opacity-50 sidebar-resize-hide">عناصر التحكم</div>
                             <i class="ph-dots-three sidebar-resize-show"></i>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link">
+                                <i class="ph-circles-four"></i>
+                                <span>الصلاحيات</span>
+                            </a>
+                            <ul class="nav-group-sub collapse">
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('permissions.index') }}" class="nav-link">عرض الصلاحيات</a>
+                                </li>
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('permissions.create') }}" class="nav-link">اضافة صلاحية</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link">
+                                <i class="ph-circles-four"></i>
+                                <span>الادوار</span>
+                            </a>
+                            <ul class="nav-group-sub collapse">
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('roles.index') }}" class="nav-link">عرض الادور</a>
+                                </li>
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('roles.create') }}" class="nav-link">اضافة دور</a>
+                                </li>
+                                <li class="nav-item nav-item">
+                                    <a href="{{ route('roles.permissions.index', '1') }}" class="nav-link">الصلاحيات
+                                        والادوار</a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item nav-item-submenu">
                             <a href="#" class="nav-link">

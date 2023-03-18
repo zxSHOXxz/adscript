@@ -21,7 +21,7 @@
     <!-- Basic datatable -->
     <div class="card">
         <div class="card-header">
-            <h5 class="mb-0">قائمة الﺃسئلة</h5>
+            <h5 class="mb-0">قائمة الخيارات</h5>
         </div>
 
         <table class="table datatable-basic">

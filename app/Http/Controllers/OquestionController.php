@@ -12,7 +12,7 @@ class OquestionController extends Controller
      */
     public function index()
     {
-        $oquestions = Oquestion::all();
+        $oquestions = Oquestion::withCount('options')->get();
         return view('cms.oquestions.index', compact('oquestions'));
     }
 
