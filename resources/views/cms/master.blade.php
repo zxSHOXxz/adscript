@@ -397,10 +397,11 @@
                             <i class="ph-gear me-2"></i>
                             Account settings
                         </a>
-                        <a href="#" class="dropdown-item">
-                            <i class="ph-sign-out me-2"></i>
-                            Logout
-                        </a>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button class="dropdown-item" type="submit"><i class="ph-sign-out me-2"></i>تسجيل
+                                الخروج</button>
+                        </form>
                     </div>
                 </li>
             </ul>
@@ -515,7 +516,7 @@
                                         الاختيارية</a>
                                 </li>
                                 <li class="nav-item nav-item">
-                                    <a href="{{ route('oquestions.create') }}" class="nav-link">اضافة خيار</a>
+                                    <a href="{{ route('oquestions.create') }}" class="nav-link">اضافة سؤال</a>
                                 </li>
                                 <li class="nav-item nav-item">
                                     <a href="{{ route('options.index') }}" class="nav-link">عرض الخيارات</a>
@@ -553,7 +554,7 @@
                         <li class="nav-item nav-item-submenu">
                             <a href="#" class="nav-link">
                                 <i class="ph-circles-four"></i>
-                                <span>Dive</span>
+                                <span>Div</span>
                             </a>
                             <ul class="nav-group-sub collapse">
                                 <li class="nav-item nav-item">
@@ -578,94 +579,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item nav-item-submenu">
-                            <a href="#" class="nav-link">
-                                <i class="ph-circles-four"></i>
-                                <span>التحكم في الفرونت</span>
-                            </a>
-                            <ul class="nav-group-sub collapse">
-                                <li class="nav-item nav-item-submenu">
-                                    <a href="#" class="nav-link">Task manager</a>
-                                    <ul class="nav-group-sub collapse">
-                                        <li class="nav-item"><a href="task_manager_grid.html" class="nav-link">Task
-                                                grid</a></li>
-                                        <li class="nav-item"><a href="task_manager_list.html" class="nav-link">Task
-                                                list</a></li>
-                                        <li class="nav-item"><a href="task_manager_detailed.html"
-                                                class="nav-link">Task detailed</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item nav-item-submenu">
-                                    <a href="#" class="nav-link">Inbox</a>
-                                    <ul class="nav-group-sub collapse">
-                                        <li class="nav-item"><a href="mail_list.html" class="nav-link">Mail list</a>
-                                        </li>
-                                        <li class="nav-item"><a href="mail_list_detached.html" class="nav-link">Mail
-                                                list (detached)</a></li>
-                                        <li class="nav-item"><a href="mail_read.html" class="nav-link">Read mail</a>
-                                        </li>
-                                        <li class="nav-item"><a href="mail_write.html" class="nav-link">Write
-                                                mail</a></li>
-                                        <li class="nav-item-divider"></li>
-                                        <li class="nav-item"><a href="chat_layouts.html" class="nav-link">Chat
-                                                layouts</a></li>
-                                        <li class="nav-item"><a href="chat_options.html" class="nav-link">Chat
-                                                options</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item nav-item-submenu">
-                                    <a href="#" class="nav-link">Search</a>
-                                    <ul class="nav-group-sub collapse">
-                                        <li class="nav-item"><a href="search_basic.html" class="nav-link">Basic
-                                                search results</a></li>
-                                        <li class="nav-item"><a href="search_users.html" class="nav-link">User search
-                                                results</a></li>
-                                        <li class="nav-item"><a href="search_images.html" class="nav-link">Image
-                                                search results</a></li>
-                                        <li class="nav-item"><a href="search_videos.html" class="nav-link">Video
-                                                search results</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item nav-item-submenu">
-                                    <a href="#" class="nav-link">Job search</a>
-                                    <ul class="nav-group-sub collapse">
-                                        <li class="nav-item"><a href="job_list_cards.html" class="nav-link">Cards
-                                                view</a></li>
-                                        <li class="nav-item"><a href="job_list_list.html" class="nav-link">List
-                                                view</a></li>
-                                        <li class="nav-item"><a href="job_detailed.html" class="nav-link">Job
-                                                detailed</a></li>
-                                        <li class="nav-item"><a href="job_apply.html" class="nav-link">Apply</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item nav-item-submenu">
-                                    <a href="#" class="nav-link">Learning</a>
-                                    <ul class="nav-group-sub collapse">
-                                        <li class="nav-item"><a href="learning_list.html" class="nav-link">List
-                                                view</a></li>
-                                        <li class="nav-item"><a href="learning_grid.html" class="nav-link">Grid
-                                                view</a></li>
-                                        <li class="nav-item"><a href="learning_detailed.html"
-                                                class="nav-link">Detailed course</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item nav-item-submenu">
-                                    <a href="#" class="nav-link">Ecommerce set</a>
-                                    <ul class="nav-group-sub collapse">
-                                        <li class="nav-item"><a href="ecommerce_product_list.html"
-                                                class="nav-link">Product list</a></li>
-                                        <li class="nav-item"><a href="ecommerce_product_grid.html"
-                                                class="nav-link">Product grid</a></li>
-                                        <li class="nav-item"><a href="ecommerce_orders_history.html"
-                                                class="nav-link">Orders history</a></li>
-                                        <li class="nav-item"><a href="ecommerce_customers.html"
-                                                class="nav-link">Customers</a></li>
-                                        <li class="nav-item"><a href="ecommerce_pricing.html"
-                                                class="nav-link">Pricing tables</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
+
 
                         <!-- /page kits -->
 
@@ -1044,6 +958,8 @@
         <script src="{{ asset('cms/assets/demo/charts/pages/dashboard/pies.js') }}"></script>
         <script src="{{ asset('cms/assets/demo/charts/pages/dashboard/bullets.js') }}"></script>
         <!-- /theme JS files -->
+        <script type="text/javascript" src="{{ asset('cms/assets/js/vendor/pickers/color/spectrum.js') }}"></script>
+        <script></script>
         @yield('scripts')
 </body>
 

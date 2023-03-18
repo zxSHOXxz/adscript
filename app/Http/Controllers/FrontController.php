@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ad;
 use App\Models\Answer;
 use App\Models\Div;
 use App\Models\Iquestion;
@@ -24,9 +25,15 @@ class FrontController extends Controller
         $items = NavItem::all();
         $divs = Div::all();
         $texts = Text::all();
-        return view('front.index', compact('oquestions', 'iquestions', 'divs', 'items', 'texts'));
+        $ads = Ad::all();
+        return view('front.index', compact('oquestions', 'iquestions', 'divs', 'items', 'texts', 'ads'));
     }
 
+    public function final()
+    {
+        $divs = Div::all();
+        return view('front.final', compact('divs'));
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -68,7 +75,7 @@ class FrontController extends Controller
                         $isSaved = $answer->save();
                     }
                 }
-                return response()->json(['icon' => 'success', 'title' => "تمت عملية التخزين"], 200);
+                return response()->json(['icon' => 'warning', 'title' => "يجب عليك تطبيق الشروط حتى يتم ارسال الطلب"], 200);
             } else {
                 return response()->json(['icon' => 'error', 'title' => "فشلت عملية التخزين"], 400);
             }

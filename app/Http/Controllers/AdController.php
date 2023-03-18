@@ -40,6 +40,17 @@ class AdController extends Controller
             $ad = new Ad();
             $ad->place = $request->get('place');
             $ad->content = $request->get('content');
+            $ad->href = $request->get('href');
+            if (request()->hasFile('image')) {
+
+                $image = $request->file('image');
+
+                $imageName = time() . 'image.' . $image->getClientOriginalExtension();
+
+                $image->move('storage/images/logo', $imageName);
+
+                $ad->image = $imageName;
+            }
             $isSaved = $ad->save();
             if ($isSaved) {
                 return response()->json(['icon' => 'success', 'title' => "تمت عملية التخزين"], 200);
@@ -83,6 +94,17 @@ class AdController extends Controller
             $ad = Ad::findOrFail($id);
             $ad->place = $request->get('place');
             $ad->content = $request->get('content');
+            $ad->href = $request->get('href');
+            if (request()->hasFile('image')) {
+
+                $image = $request->file('image');
+
+                $imageName = time() . 'image.' . $image->getClientOriginalExtension();
+
+                $image->move('storage/images/logo', $imageName);
+
+                $ad->image = $imageName;
+            }
             $isSaved = $ad->save();
             if ($isSaved) {
                 return ['redirect' => route('ads.index')];

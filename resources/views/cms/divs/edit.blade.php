@@ -35,12 +35,24 @@
                         <div class="mb-3">
                             <label class="form-label">اسم الdiv</label>
                             <input type="text" name="name" id="name" class="form-control" placeholder="اسم الdiv"
-                                value="{{ $div->name }}">
+                                value="{{ $div->name }}" disabled>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">اسم الdiv</label>
+                            <label class="form-label">المحتوى</label>
                             <input type="text" name="content" id="content" class="form-control" placeholder="المحتوى"
                                 value="{{ $div->content }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">اللينك</label>
+                            <input type="text" name="href" id="href" class="form-control" placeholder="اللينك"
+                                value="{{ $div->href }}">
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-form-label col-lg-3">صورة</label>
+                            <div class="col-lg-9">
+                                <input type="file" id="image" name="image" class="form-control" accept="image/*">
+                                <div class="form-text">ادخل صورة</div>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <div class="mb-3 row">
@@ -118,8 +130,10 @@
         function performUpdate(id) {
             let formData = new FormData();
             formData.append('color_id', document.getElementById('color_id').value);
-            formData.append('name', document.getElementById('name').value);
             formData.append('content', document.getElementById('content').value);
+            formData.append('href', document.getElementById('href').value);
+            formData.append('image', document.getElementById('image').files[0]);
+
             storeRoute('/cms/admin/divs_update/' + id, formData);
         }
         /* ------------------------------------------------------------------------------

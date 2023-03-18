@@ -31,10 +31,11 @@
                         <form action="#">
                             <div class="mb-3">
                                 <label class="form-label"> رقم اللون </label>
-                                <input type="color" id="color_number" class="form-control form-control-color" name="color_number">
+                                <input type="color" id="color_number" class="form-control form-control-color"
+                                    name="color_number">
                             </div>
                             <div class="d-flex justify-content-end align-items-center">
-                                <button type="reset" class="btn btn-light">الغاء</button>
+                                <a href="{{ route('color.index') }}" class="btn btn-light">الغاء</a>
                                 <button type="button" onclick="performStore()" class="btn btn-primary ms-3"> اضافة <i
                                         class="ph-paper-plane-tilt ms-2"></i></button>
                             </div>

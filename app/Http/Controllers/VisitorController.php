@@ -19,9 +19,6 @@ class VisitorController extends Controller
         $iquestions = Iquestion::orderBy('id', 'asc')->get();
         $oquestions = Oquestion::with('options')->orderBy('id', 'asc')->get();
         $visitors = Visitor::with('answers')->orderBy('id', 'desc')->get();
-        // $visitors = Visitor::with(['answers' => function ($query) {
-        //     $query->where('oquestion_id', '!=' , '1');
-        // }])->get();
         return view('cms.visitors.index', compact('iquestions', 'oquestions', 'visitors'));
     }
 

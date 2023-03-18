@@ -33,16 +33,31 @@ class DivController extends Controller
     {
         $validator = validator($request->all(), [
             'color_id' => 'required',
+            'content' => 'required',
+            'image' => 'nullable',
+            'href' => 'nullable',
             'name' => 'required',
         ], [
             'color_id.required' => ' قيمة حقل اللون مطلوبة ',
             'name.required' => ' قيمة حقل الاسم مطلوبة ',
+            'content.required' => ' قيمة حقل المحتوى مطلوب مطلوبة ',
         ]);
         if (!$validator->fails()) {
             $div = new Div();
             $div->color_id = $request->get('color_id');
             $div->name = $request->get('name');
             $div->content = $request->get('content');
+            $div->href = $request->get('href');
+            if (request()->hasFile('image')) {
+
+                $image = $request->file('image');
+
+                $imageName = time() . 'image.' . $image->getClientOriginalExtension();
+
+                $image->move('storage/images/logo', $imageName);
+
+                $div->image = $imageName;
+            }
             $isSaved = $div->save();
             if ($isSaved) {
                 return response()->json(['icon' => 'success', 'title' => "تمت عملية التخزين"], 200);
@@ -79,15 +94,31 @@ class DivController extends Controller
     {
         $validator = validator($request->all(), [
             'color_id' => 'required',
+            'content' => 'required',
+            'image' => 'nullable',
+            'href' => 'nullable',
             'name' => 'required',
         ], [
             'color_id.required' => ' قيمة حقل اللون مطلوبة ',
             'name.required' => ' قيمة حقل الاسم مطلوبة ',
+            'content.required' => ' قيمة حقل المحتوى مطلوب مطلوبة ',
         ]);
         if (!$validator->fails()) {
             $div->color_id = $request->get('color_id');
             $div->name = $request->get('name');
             $div->content = $request->get('content');
+            $div->href = $request->get('href');
+
+            if (request()->hasFile('image')) {
+
+                $image = $request->file('image');
+
+                $imageName = time() . 'image.' . $image->getClientOriginalExtension();
+
+                $image->move('storage/images/logo', $imageName);
+
+                $div->image = $imageName;
+            }
             $isSaved = $div->save();
             if ($isSaved) {
                 return ['redirect' => route('divs.index')];

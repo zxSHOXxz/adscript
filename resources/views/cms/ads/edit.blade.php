@@ -35,22 +35,43 @@
                                     placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 84px;">{{ $ad->content }}</textarea>
                             </div>
                             <div class="mb-3">
+                                <label class="form-label">اللينك</label>
+                                <input type="text" name="href" id="href" class="form-control"
+                                    placeholder="الرابط">
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-form-label col-lg-3">صورة</label>
+                                <div class="col-lg-9">
+                                    <input type="file" id="image" name="image" class="form-control"
+                                        accept="image/*">
+                                    <div class="form-text">ادخل صورة</div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
                                 <div class="mb-3 row">
                                     <label class="col-form-label col-lg-3">المكان</label>
                                     <div class="col-lg-9">
                                         <select class="form-control select" id="place" name="place">
-                                            <option value="header" {{ $ad->place == 'header' ? 'selected' : null }} >الهيدر</option>
-                                            <option value="footer" {{ $ad->place == 'footer' ? 'selected' : null }}>الفوتر</option>
-                                            <option value="center" {{ $ad->place == 'center' ? 'selected' : null }}>سنتر</option>
-                                            <option value="sidebar" {{ $ad->place == 'sidebar' ? 'selected' : null }}>سايدبار</option>
+                                            <option value="header" {{ $ad->place == 'header' ? 'selected' : null }}>الهيدر
+                                            </option>
+                                            <option value="footer" {{ $ad->place == 'footer' ? 'selected' : null }}>الفوتر
+                                            </option>
+                                            <option value="center" {{ $ad->place == 'center' ? 'selected' : null }}>سنتر
+                                            </option>
+                                            <option
+                                                value="sidebarRight"{{ $ad->place == 'sidebarRight' ? 'selected' : null }}>
+                                                السايدبار الايمن</option>
+                                            <option
+                                                value="sidebarLeft"{{ $ad->place == 'sidebarLeft' ? 'selected' : null }}>
+                                                السايدبار الايسر</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end align-items-center">
                                 <a href="{{ route('ads.index') }}" class="btn btn-light">الغاء</a>
-                                <button type="button" onclick="performUpdate({{ $ad->id }})" class="btn btn-primary ms-3"> اضافة <i
-                                        class="ph-paper-plane-tilt ms-2"></i></button>
+                                <button type="button" onclick="performUpdate({{ $ad->id }})"
+                                    class="btn btn-primary ms-3"> اضافة <i class="ph-paper-plane-tilt ms-2"></i></button>
                             </div>
                         </form>
                     </div>
@@ -80,6 +101,8 @@
             let formData = new FormData();
             formData.append('place', document.getElementById('place').value);
             formData.append('content', document.getElementById('content').value);
+            formData.append('href', document.getElementById('href').value);
+            formData.append('image', document.getElementById('image').files[0]);
             storeRoute('/cms/admin/ads_update/' + id, formData);
         }
     </script>
