@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('answers', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('visitor_id');
-            $table->foreign('visitor_id')->on('visitors')->references('id')->cascadeOnDelete();
-            $table->morphs('question');
-            $table->timestamps();
+        Schema::table('oquestions', function (Blueprint $table) {
+            $table->string('order');
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('answers');
+        Schema::table('oquestions', function (Blueprint $table) {
+            //
+        });
     }
 };

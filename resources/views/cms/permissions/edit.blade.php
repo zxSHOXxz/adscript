@@ -66,7 +66,7 @@
         function performUpdate(id) {
             let formData = new FormData();
             formData.append('name', document.getElementById('name').value);
-            storeRoute('/cms/admin/permissions_update/' + id, formData);
+            storeRoute('/cms/admin/permission_update/' + id, formData);
         }
     </script>
 @endsection

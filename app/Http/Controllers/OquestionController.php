@@ -37,6 +37,7 @@ class OquestionController extends Controller
         if (!$validator->fails()) {
             $oquestion = new Oquestion();
             $oquestion->content = $request->get('content');
+            $oquestion->order = $oquestion->id;
             $isSaved = $oquestion->save();
             if ($isSaved) {
                 return response()->json(['icon' => 'success', 'title' => "تمت عملية التخزين"], 200);
@@ -71,13 +72,16 @@ class OquestionController extends Controller
     {
         $validator = validator($request->all(), [
             'content' => 'required',
+            'order' => 'required',
         ], [
             'content.required' => ' قيمة حقل المحتوى مطلوبة ',
+            'order.required' => ' قيمة حقل الترتيب مطلوبة ',
         ]);
         if (!$validator->fails()) {
-
             $oquestion = Oquestion::findOrFail($id);
             $oquestion->content = $request->get('content');
+            $oquestion->order = $request->get('order');
+            $oquestion->status = $request->get('status');
             $isSaved = $oquestion->save();
             if ($isSaved) {
                 return ['redirect' => route('oquestions.index')];

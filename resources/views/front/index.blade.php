@@ -48,7 +48,7 @@
 
         body {
             overflow-y: auto !important;
-            direction: rtl !important;
+            direction: ltr !important;
         }
 
         body,

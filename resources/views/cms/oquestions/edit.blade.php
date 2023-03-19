@@ -30,14 +30,19 @@
                     <div class="card-body">
                         <form action="#">
                             <div class="mb-3">
-                                <label class="form-label fw-bold"> محتوى الاعلان </label>
+                                <label class="form-label fw-bold"> محتوى السؤال </label>
                                 <textarea rows="3" cols="3" class="form-control elastic" id="content" name="content"
                                     placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 84px;">{{ $oquestion->content }}</textarea>
                             </div>
+                            <div class="mb-3">
+                                <label class="form-label">الترتيب</label>
+                                <input type="text" name="order" id="order" class="form-control"
+                                    placeholder="الترتيب">
+                            </div>
                             <div class="d-flex justify-content-end align-items-center">
                                 <a href="{{ route('oquestions.index') }}" class="btn btn-light">الغاء</a>
-                                <button type="button" onclick="performUpdate({{ $oquestion->id }})" class="btn btn-primary ms-3"> اضافة <i
-                                        class="ph-paper-plane-tilt ms-2"></i></button>
+                                <button type="button" onclick="performUpdate({{ $oquestion->id }})"
+                                    class="btn btn-primary ms-3"> اضافة <i class="ph-paper-plane-tilt ms-2"></i></button>
                             </div>
                         </form>
                     </div>
@@ -66,6 +71,7 @@
         function performUpdate(id) {
             let formData = new FormData();
             formData.append('content', document.getElementById('content').value);
+            formData.append('order', document.getElementById('order').value);
             storeRoute('/cms/admin/oquestions_update/' + id, formData);
         }
     </script>

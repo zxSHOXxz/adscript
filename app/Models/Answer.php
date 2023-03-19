@@ -9,13 +9,9 @@ class Answer extends Model
 {
     use HasFactory;
 
-    public function Oquestion()
+    public function question()
     {
-        return $this->hasMany(Oquestion::class, 'oquestion_id', 'id');
-    }
-    public function Iquestion()
-    {
-        return $this->hasMany(Iquestion::class, 'iquestion_id', 'id');
+        return $this->morphTo();
     }
     public function visitor()
     {

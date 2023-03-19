@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\VisitorsExport;
 use App\Models\Iquestion;
+use App\Models\Option;
 use App\Models\Oquestion;
 use App\Models\Visitor;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 use function GuzzleHttp\Promise\all;
 
@@ -14,14 +19,35 @@ class VisitorController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
+    {
+        $iquestions = Iquestion::orderBy('id', 'asc')->get();
+        $oquestions = Oquestion::with('options')
+            ->orderBy('id', 'asc')->get();
+        $options = Option::all();
+        $visitors = Visitor::with('answers')
+            ->when($request->created_at, function ($query, $value) {
+                $startDate = Carbon::parse($value)->startOfDay();
+                $endDate = Carbon::now();
+                $query->whereBetween('created_at', [$startDate, $endDate]);
+            })
+            ->orderBy('id', 'desc')
+            ->get();
+        return view('cms.visitors.index', compact('options', 'iquestions', 'oquestions', 'visitors'));
+    }
+
+    public function export(Request $request)
     {
         $iquestions = Iquestion::orderBy('id', 'asc')->get();
         $oquestions = Oquestion::with('options')->orderBy('id', 'asc')->get();
-        $visitors = Visitor::with('answers')->orderBy('id', 'desc')->get();
-        return view('cms.visitors.index', compact('iquestions', 'oquestions', 'visitors'));
+        $query = Visitor::with('answers')
+            ->when($request->created_at, function ($query, $value) {
+                $query->where('created_at', '>=', "%{$value}%");
+            });
+        $export = new VisitorsExport($iquestions, $oquestions);
+        $export->setQuery($query);
+        return Excel::download($export, 'visitors.xlsx');
     }
-
     /**
      * Show the form for creating a new resource.
      */

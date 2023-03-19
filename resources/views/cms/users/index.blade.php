@@ -1,15 +1,15 @@
 @extends('cms.master')
-@section('title', 'الﺃسئلة')
+@section('title', 'Divs')
 
-@section('tittle_1', ' عرض الﺃسئلة ')
-@section('tittle_2', ' عرض الﺃسئلة ')
+@section('tittle_1', ' عرض Divs ')
+@section('tittle_2', ' عرض Divs ')
 
 
 @section('styles')
     <style>
         .color {
             color: #fff;
-            margin-inline: 15px;
+            padding: 15px;
             width: 35px;
         }
     </style>
@@ -21,39 +21,43 @@
     <!-- Basic datatable -->
     <div class="card">
         <div class="card-header">
-            <h5 class="mb-0">قائمة الﺃسئلة</h5>
+            <h5 class="mb-0">قائمة Divs</h5>
         </div>
 
         <table class="table datatable-basic">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>محتوى السؤال</th>
-                    <th>الترتيب</th>
-                    <th>الحالة</th>
-                    <th class="text-center">الاجراءات</th>
+                    <th>الاسم</th>
+                    <th>محتوى Div</th>
+                    <th>لون Div</th>
+                    <th class="div-center">الاجراءات</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($iquestions as $iquestion)
+                @foreach ($divs as $div)
                     <tr>
-                        <td>{{ $iquestion->id }}</td>
-                        <td>{{ $iquestion->content }}</td>
-                        <td>{{ $iquestion->order }}</td>
-                        <td><div class="badge bg-danger"> {{ $iquestion->status }} </div></td>
-                        <td class="text-center">
+                        <td>{{ $div->id }}</td>
+                        <td>{{ $div->name }}</td>
+                        <td>{{ $div->content }}</td>
+                        <td class="d-flex justify-content-start gap-2 align-items-center">{{ $div->color->color_number }}
+                            <div class="color" style="background-color: {{ $div->color->color_number }}">
+
+                            </div>
+                        </td>
+                        <td class="div-center">
                             <div class="d-inline-flex">
                                 <div class="dropdown">
-                                    <a href="#" class="text-body" data-bs-toggle="dropdown">
+                                    <a href="#" class="div-body" data-bs-toggle="dropdown">
                                         <i class="ph-list"></i>
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="{{ route('iquestions.edit', $iquestion->id) }}" class="dropdown-item">
+                                        <a href="{{ route('divs.edit', $div->id) }}" class="dropdown-item">
                                             <i class="ph-file-doc me-2"></i>
                                             تعديل
                                         </a>
-                                        <a href="#" onclick="performDestroy({{ $iquestion->id }},this)"
+                                        <a href="#" onclick="performDestroy({{ $div->id }},this)"
                                             class="dropdown-item">
                                             <i class="ph-file-doc me-2"></i>
                                             حذف
@@ -79,7 +83,7 @@
 @section('scripts')
     <script>
         function performDestroy(id, referance) {
-            let url = '/cms/admin/iquestions/' + id;
+            let url = '/cms/admin/divs/' + id;
             confirmDestroy(url, referance);
         }
         /* ------------------------------------------------------------------------------

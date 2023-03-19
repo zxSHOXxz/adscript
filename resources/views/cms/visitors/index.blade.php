@@ -21,45 +21,82 @@
     <!-- Basic datatable -->
     <div class="card">
         <div class="card-header">
-            <h5 class="mb-0">قائمة الزوار</h5>
-        </div>
+            <div class="row d-flex justify-content-between align-items-center">
+                <div class="col">
+                    <h5 class="mb-0">قائمة الزوار</h5>
+                </div>
+                <div class="col text-end">
+                    <a class="btn btn-dark" href="{{ route('visitors/export', request()->query()) }}"> تصدير اكسل </a>
+                </div>
+            </div>
+            <form action="" method="get" class="m-3">
+                <div class="row d-flex justify-content-between align-items-center">
+                    <div class="input-icon col-md-3 col-12">
+                        <input type="date" class="form-control" placeholder="ابحث من خلال تاريخ الانشاء "
+                            name='created_at' id="created_at"
+                            @if (request()->created_at) value={{ request()->created_at }} @endif />
+                    </div>
 
-        <table class="table datatable-basic">
+                    <div class="col mt-4 d-flex gap-2 align-items-center justify-content-end">
+                        <button class="btn btn-danger btn-md submit" type="submit">Filter</button>
+                        <a href="{{ route('visitors.index') }}" type="button" class="btn btn-info">إنهاء
+                            البحث </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <table class="table datatable-basic" id="myTable">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>ip</th>
-                    @foreach ($iquestions as $iquestion)
-                        <th>{{ $iquestion->content }}</th>
+                    <th>تاريخ الزيارة</th>
+                    @foreach ($oquestions as $oqusetion)
+                        <th>{{ $oqusetion->content ?? 'عذرا لا يوجد بيانات' }}</th>
                     @endforeach
-                    @foreach ($oquestions as $oquestion)
-                        <th>{{ $oquestion->content }}</th>
+                    @foreach ($iquestions as $iqusetion)
+                        <th>{{ $iqusetion->content ?? 'عذرا لا يوجد بيانات' }}</th>
                     @endforeach
                 </tr>
             </thead>
             <tbody>
                 @foreach ($visitors as $visitor)
                     <tr>
-                        <td>{{ $visitor->id ?? null }}</td>
-                        <td>{{ $visitor->ip_address ?? null }}</td>
-                        @foreach ($visitor->answers as $answer)
-                            @if ($answer->iquestion_id != 1)
-                                <td>{{ $answer->content ?? 'null' }}</td>
-                            @endif
-                        @endforeach
-                        @foreach ($visitor->answers as $answer)
-                            @if ($answer->oquestion_id != 1)
+                        <td>{{ $visitor->id ?? 'عذرا لا يوجد بيانات' }}</td>
+                        <td>{{ $visitor->ip_address ?? 'عذرا لا يوجد بيانات' }}</td>
+                        <td>{{ $visitor->created_at ?? 'عذرا لا يوجد بيانات' }}</td>
+
+                        @php
+                            $dif = 0;
+                            $oquestions_answers = $visitor->answers->where('question_type', 'App\Models\Oquestion')->all();
+                            $iquestions_answers = $visitor->answers->where('question_type', 'App\Models\Iquestion')->all();
+                            if (count($visitor->answers) !== count($oquestions) + count($iquestions)) {
+                                $dif = count($oquestions) + count($iquestions) - count($visitor->answers);
+                            }
+                        @endphp
+
+                        @foreach ($oquestions_answers as $answer)
+                            <td>
                                 @php
-                                    $q = $oquestions->where('id', $answer->oquestion_id)->first();
-                                    $option = $q->options->where('id', $answer->content)->first();
+                                    $content = $options->where('id', $answer->content)->first();
                                 @endphp
-                                <td>{{ $option->content ?? 'null' }}</td>
-                            @endif
+                                {{ $content->content ?? 'عذرا لا يوجد بيانات' }}
+                            </td>
                         @endforeach
+
+                        @foreach ($iquestions_answers as $answer)
+                            <td>{{ $answer->content ?? 'عذرا لا يوجد بيانات' }}</td>
+                        @endforeach
+                        @if ($dif > 0)
+                            @for ($i = 0; $i < $dif; $i++)
+                                <td>عذرا لا يوجد بيانات</td>
+                            @endfor
+                        @endif
                     </tr>
                 @endforeach
             </tbody>
         </table>
+
     </div>
     <!-- /basic datatable -->
 
@@ -71,6 +108,15 @@
 
 
 @section('scripts')
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.5.0/jszip.min.js"></script>
+
+    <!-- pdfmake -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
+
+    <!-- DataTables Buttons -->
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
     <script>
         /* ------------------------------------------------------------------------------
          *
@@ -101,10 +147,18 @@
                 // Setting datatable defaults
                 $.extend($.fn.dataTable.defaults, {
                     autoWidth: false,
+                    pagingType: "simple",
+                    lengthMenu: [10, 100, 1000, 10000],
+                    language: {
+                        paginate: {
+                            'next': document.dir == "rtl" ? 'Next &larr;' : 'Next &rarr;',
+                            'previous': document.dir == "rtl" ? '&rarr; Prev' : '&larr; Prev'
+                        }
+                    },
                     columnDefs: [{
                         orderable: false,
                         width: 100,
-                        targets: [3]
+                        targets: [1]
                     }],
                     dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
                     language: {
@@ -126,6 +180,7 @@
                 // Alternative pagination
                 $('.datatable-pagination').DataTable({
                     pagingType: "simple",
+                    lengthMenu: [10, 25, 50, 1000],
                     language: {
                         paginate: {
                             'next': document.dir == "rtl" ? 'Next &larr;' : 'Next &rarr;',

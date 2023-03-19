@@ -12,6 +12,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\TextController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisitorController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,10 +32,15 @@ Route::get('/final', [FrontController::class, 'final'])->name('front.final');
 
 Route::resource('index', FrontController::class);
 
-Route::prefix('cms/admin')->middleware(['auth:web', 'auth.session', 'verified'])->group(function () {
+Route::prefix('cms/admin')->middleware(['auth:web', 'verified'])->group(function () {
+
+    Route::resource('users', UserController::class);
+    Route::post('users_update/{user}', [UserController::class, 'update'])->name('users_update');
 
     Route::resource('color', ColorController::class);
     Route::post('colors_update/{color}', [ColorController::class, 'update'])->name('colors_update');
+
+    Route::get('visitors/export',[VisitorController::class,'export'])->name('visitors/export');
 
     Route::resource('ads', AdController::class);
     Route::post('ads_update/{id}', [AdController::class, 'update'])->name('ads_update');

@@ -31,8 +31,8 @@
                         <form action="#">
                             <div class="mb-3">
                                 <label class="form-label fw-bold"> محتوى السؤال </label>
-                                <textarea rows="3" cols="3" class="form-control elastic" id="content" name="content" placeholder="Textarea"
-                                    style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 84px;"></textarea>
+                                <textarea rows="3" cols="3" class="form-control elastic" id="content" name="content"
+                                    placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 84px;"></textarea>
                             </div>
                             <div class="d-flex justify-content-end align-items-center">
                                 <a href="{{ route('oquestions.index') }}" class="btn btn-light">الغاء</a>

@@ -11,6 +11,10 @@ class Oquestion extends Model
 
     public function options()
     {
-        return $this->hasMany(Option::class , 'oquestions_id');
+        return $this->hasMany(Option::class, 'oquestions_id');
+    }
+    public function answer()
+    {
+        return $this->morphOne(Answer::class, 'question');
     }
 }

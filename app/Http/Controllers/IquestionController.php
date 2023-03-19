@@ -37,6 +37,9 @@ class IquestionController extends Controller
         if (!$validator->fails()) {
             $iquestion = new Iquestion();
             $iquestion->content = $request->get('content');
+            $iquestion->order = 999;
+            $iquestion->save();
+            $iquestion->order = $iquestion->id;
             $isSaved = $iquestion->save();
             if ($isSaved) {
                 return response()->json(['icon' => 'success', 'title' => "تمت عملية التخزين"], 200);
@@ -71,11 +74,17 @@ class IquestionController extends Controller
     {
         $validator = validator($request->all(), [
             'content' => 'required',
+            'order' => 'required',
+            'status' => 'required',
         ], [
             'content.required' => ' قيمة حقل المحتوى مطلوبة ',
+            'order.required' => ' قيمة حقل الترتيب مطلوبة ',
+            'status.required' => ' قيمة حقل الترتيب مطلوبة ',
         ]);
         if (!$validator->fails()) {
             $iquestion->content = $request->get('content');
+            $iquestion->order = $request->get('order');
+            $iquestion->status = $request->get('status');
             $isSaved = $iquestion->save();
             if ($isSaved) {
                 return ['redirect' => route('iquestions.index')];

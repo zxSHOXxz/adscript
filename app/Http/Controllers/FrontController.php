@@ -20,8 +20,8 @@ class FrontController extends Controller
      */
     public function index()
     {
-        $oquestions = Oquestion::orderBy('id', 'asc')->get();
-        $iquestions = Iquestion::orderBy('id', 'asc')->get();
+        $oquestions = Oquestion::where('status', 'active')->orderBy('order', 'asc')->get();
+        $iquestions = Iquestion::where('status', 'active')->orderBy('order', 'asc')->get();
         $items = NavItem::all();
         $divs = Div::all();
         $texts = Text::all();
@@ -61,16 +61,16 @@ class FrontController extends Controller
                         $number = Str::remove('iquestion', $key);
                         $answer = new Answer();
                         $answer->content = $value;
-                        $answer->iquestion_id = $number;
-                        $answer->oquestion_id = 1;
+                        $question = Iquestion::findOrFail($number);
+                        $answer->question()->associate($question);
                         $answer->visitor_id = $visitor->id;
                         $isSaved = $answer->save();
                     } elseif ($oquestion) {
                         $number = Str::remove('oquestion', $key);
                         $answer = new Answer();
                         $answer->content = $value;
-                        $answer->oquestion_id = $number;
-                        $answer->iquestion_id = 1;
+                        $question = Oquestion::findOrFail($number);
+                        $answer->question()->associate($question);
                         $answer->visitor_id = $visitor->id;
                         $isSaved = $answer->save();
                     }

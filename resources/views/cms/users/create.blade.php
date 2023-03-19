@@ -1,8 +1,8 @@
 @extends('cms.master')
-@section('title', 'الﺃسئلة')
+@section('title', 'Divs')
 
-@section('tittle_1', ' عرض الﺃسئلة ')
-@section('tittle_2', ' عرض الﺃسئلة ')
+@section('tittle_1', ' اضافة Div ')
+@section('tittle_2', ' اضافة Div ')
 
 
 @section('styles')
@@ -21,51 +21,62 @@
     <!-- Basic datatable -->
     <div class="card">
         <div class="card-header">
-            <h5 class="mb-0">قائمة الﺃسئلة</h5>
+            <h5 class="mb-0">اضافة Div</h5>
         </div>
 
-        <table class="table datatable-basic">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>محتوى السؤال</th>
-                    <th>الترتيب</th>
-                    <th>الحالة</th>
-                    <th class="text-center">الاجراءات</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($iquestions as $iquestion)
-                    <tr>
-                        <td>{{ $iquestion->id }}</td>
-                        <td>{{ $iquestion->content }}</td>
-                        <td>{{ $iquestion->order }}</td>
-                        <td><div class="badge bg-danger"> {{ $iquestion->status }} </div></td>
-                        <td class="text-center">
-                            <div class="d-inline-flex">
-                                <div class="dropdown">
-                                    <a href="#" class="text-body" data-bs-toggle="dropdown">
-                                        <i class="ph-list"></i>
-                                    </a>
-
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="{{ route('iquestions.edit', $iquestion->id) }}" class="dropdown-item">
-                                            <i class="ph-file-doc me-2"></i>
-                                            تعديل
-                                        </a>
-                                        <a href="#" onclick="performDestroy({{ $iquestion->id }},this)"
-                                            class="dropdown-item">
-                                            <i class="ph-file-doc me-2"></i>
-                                            حذف
-                                        </a>
-                                    </div>
+        <div class="card-body">
+            <!-- Right aligned buttons -->
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0"> اضافة Div </h6>
+                </div>
+                <div class="card-body">
+                    <form action="#">
+                        <div class="mb-3">
+                            <label class="form-label">الاسم</label>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="الاسم">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">الايميل</label>
+                            <input type="text" name="email" id="email" class="form-control" placeholder="الايميل">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">الباسوورد</label>
+                            <input type="password" name="password" id="password" class="form-control"
+                                placeholder="كلمة المرور">
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-form-label col-lg-3">صورة</label>
+                            <div class="col-lg-9">
+                                <input type="file" id="image" name="image" class="form-control" accept="image/*">
+                                <div class="form-text">ادخل صورة</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="mb-3 row">
+                                <label class="col-form-label col-lg-3">الدور</label>
+                                <div class="col-lg-9">
+                                    <select class="form-control select" id="role_id" name="role_id">
+                                        @foreach ($roles as $role)
+                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+                        </div>
+                        <div class="d-flex justify-content-end align-items-center">
+                            <a href="{{ route('users.index') }}" class="btn btn-light">الغاء</a>
+                            <button type="button" onclick="performStore()" class="btn btn-primary ms-3"> اضافة <i
+                                    class="ph-paper-plane-tilt ms-2"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /right aligned buttons -->
+
+        </div>
+    </div>
+
     </div>
     <!-- /basic datatable -->
 
@@ -77,10 +88,18 @@
 
 
 @section('scripts')
+    <script src="{{ asset('cms/assets/js/vendor/forms/selects/select2.min.js') }}"></script>
+    <script src="{{ asset('cms/assets/demo/pages/form_select2.js') }}"></script>
     <script>
-        function performDestroy(id, referance) {
-            let url = '/cms/admin/iquestions/' + id;
-            confirmDestroy(url, referance);
+        function performStore() {
+            let formData = new FormData();
+            formData.append('name', document.getElementById('name').value);
+            formData.append('email', document.getElementById('email').value);
+            formData.append('password', document.getElementById('password').value);
+            formData.append('role_id', document.getElementById('role_id').value);
+            formData.append('image', document.getElementById('image').files[0]);
+
+            store('/cms/admin/users', formData);
         }
         /* ------------------------------------------------------------------------------
          *
@@ -114,7 +133,7 @@
                     columnDefs: [{
                         orderable: false,
                         width: 100,
-                        targets: [3]
+                        targets: [2]
                     }],
                     dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
                     language: {

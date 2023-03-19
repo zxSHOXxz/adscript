@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Iquestion extends Model
 {
     use HasFactory;
+    public function options()
+    {
+        return $this->hasMany(Option::class, 'oquestions_id');
+    }
+    public function answer()
+    {
+        return $this->morphOne(Answer::class, 'question');
+    }
 }

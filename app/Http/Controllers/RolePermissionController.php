@@ -21,8 +21,8 @@ class RolePermissionController extends Controller
             if ($item->guard_name == 'admin') {
                 $permissions = Permission::where('guard_name', 'admin')->orderBy("id", 'desc');
             }
-            if ($item->guard_name == 'client') {
-                $permissions = Permission::where('guard_name', 'client')->orderBy("id", 'desc');
+            if ($item->guard_name == 'web') {
+                $permissions = Permission::where('guard_name', 'web')->orderBy("id", 'desc');
             }
         }
         $permissions = $permissions->get();

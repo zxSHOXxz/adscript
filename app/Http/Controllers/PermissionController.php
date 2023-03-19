@@ -39,7 +39,7 @@ class PermissionController extends Controller
         if (!$validator->fails()) {
             $permissions = new Permission();
             $permissions->name = $request->get('name');
-            $permissions->guard_name = 'editor';
+            $permissions->guard_name = 'web';
 
             $isSaved = $permissions->save();
 
@@ -85,7 +85,7 @@ class PermissionController extends Controller
         if (!$validator->fails()) {
             $permissions = Permission::findOrFail($id);
             $permissions->name = $request->get('name');
-            $permissions->guard_name = 'editor';
+            $permissions->guard_name = 'web';
 
             $isUpdate = $permissions->save();
             return ['redirect' => route('permissions.index')];

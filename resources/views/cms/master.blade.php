@@ -376,28 +376,6 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-end">
-                        <a href="#" class="dropdown-item">
-                            <i class="ph-user-circle me-2"></i>
-                            My profile
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            <i class="ph-currency-circle-dollar me-2"></i>
-                            My subscription
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            <i class="ph-shopping-cart me-2"></i>
-                            My orders
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            <i class="ph-envelope-open me-2"></i>
-                            My inbox
-                            <span class="badge bg-primary rounded-pill ms-auto">26</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="ph-gear me-2"></i>
-                            Account settings
-                        </a>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button class="dropdown-item" type="submit"><i class="ph-sign-out me-2"></i>تسجيل
@@ -464,115 +442,152 @@
                             <div class="text-uppercase fs-sm lh-sm opacity-50 sidebar-resize-hide">عناصر التحكم</div>
                             <i class="ph-dots-three sidebar-resize-show"></i>
                         </li>
-                        <li class="nav-item nav-item-submenu">
-                            <a href="#" class="nav-link">
-                                <i class="ph-circles-four"></i>
-                                <span>الصلاحيات</span>
-                            </a>
-                            <ul class="nav-group-sub collapse">
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('permissions.index') }}" class="nav-link">عرض الصلاحيات</a>
-                                </li>
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('permissions.create') }}" class="nav-link">اضافة صلاحية</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item nav-item-submenu">
-                            <a href="#" class="nav-link">
-                                <i class="ph-circles-four"></i>
-                                <span>الادوار</span>
-                            </a>
-                            <ul class="nav-group-sub collapse">
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('roles.index') }}" class="nav-link">عرض الادور</a>
-                                </li>
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('roles.create') }}" class="nav-link">اضافة دور</a>
-                                </li>
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('roles.permissions.index', '1') }}" class="nav-link">الصلاحيات
-                                        والادوار</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item nav-item-submenu">
-                            <a href="#" class="nav-link">
-                                <i class="ph-circles-four"></i>
-                                <span>النصوص</span>
-                            </a>
-                            <ul class="nav-group-sub collapse">
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('texts.index') }}" class="nav-link">عرض النصوص</a>
-                                </li>
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('texts.create') }}" class="nav-link">اضافة نص</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item nav-item-submenu">
-                            <a href="#" class="nav-link">
-                                <i class="ph-circles-four"></i>
-                                <span>الالوان</span>
-                            </a>
-                            <ul class="nav-group-sub collapse">
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('color.index') }}" class="nav-link">عرض الالوان</a>
-                                </li>
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('color.create') }}" class="nav-link">اضافة لون</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item nav-item-submenu">
-                            <a href="#" class="nav-link">
-                                <i class="ph-circles-four"></i>
-                                <span>الاعلانات</span>
-                            </a>
-                            <ul class="nav-group-sub collapse">
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('ads.index') }}" class="nav-link">عرض الاعلانات</a>
-                                </li>
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('ads.create') }}" class="nav-link">اضافة اعلان</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item nav-item-submenu">
-                            <a href="#" class="nav-link">
-                                <i class="ph-circles-four"></i>
-                                <span>الاسئلة الاختيارية</span>
-                            </a>
-                            <ul class="nav-group-sub collapse">
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('oquestions.index') }}" class="nav-link">عرض الاسئلة
-                                        الاختيارية</a>
-                                </li>
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('oquestions.create') }}" class="nav-link">اضافة سؤال</a>
-                                </li>
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('options.index') }}" class="nav-link">عرض الخيارات</a>
-                                </li>
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('options.create') }}" class="nav-link">اضافة خيار</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item nav-item-submenu">
-                            <a href="#" class="nav-link">
-                                <i class="ph-circles-four"></i>
-                                <span>اسئلة الادخال</span>
-                            </a>
-                            <ul class="nav-group-sub collapse">
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('iquestions.index') }}" class="nav-link">عرض الاسئلة</a>
-                                </li>
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('iquestions.create') }}" class="nav-link">اضافة سؤال</a>
-                                </li>
-                            </ul>
-                        </li>
+                        @canany(['index-permission', 'create-permission', 'update-permission', 'delete-permission'])
+                            <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link">
+                                    <i class="ph-circles-four"></i>
+                                    <span>الصلاحيات</span>
+                                </a>
+                                <ul class="nav-group-sub collapse">
+                                    @can('index-permission')
+                                        <li class="nav-item nav-item">
+                                            <a href="{{ route('permissions.index') }}" class="nav-link">عرض الصلاحيات</a>
+                                        </li>
+                                    @endcan
+                                    @can('create-permission')
+                                        <li class="nav-item nav-item">
+                                            <a href="{{ route('permissions.create') }}" class="nav-link">اضافة صلاحية</a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </li>
+                        @endcanany
+                        @canany(['index-role', 'create-role', 'update-role', 'delete-role'])
+                            <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link">
+                                    <i class="ph-circles-four"></i>
+                                    <span>الادوار</span>
+                                </a>
+                                <ul class="nav-group-sub collapse">
+                                    @can('create-role')
+                                        <li class="nav-item nav-item">
+                                            <a href="{{ route('roles.index') }}" class="nav-link">عرض الادور</a>
+                                        </li>
+                                    @endcan
+                                    @can('create-role')
+                                        <li class="nav-item nav-item">
+                                            <a href="{{ route('roles.create') }}" class="nav-link">اضافة دور</a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </li>
+                        @endcanany
+
+                        @canany(['index-texts', 'create-texts', 'update-texts', 'delete-texts'])
+                            <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link">
+                                    <i class="ph-circles-four"></i>
+                                    <span>النصوص</span>
+                                </a>
+                                <ul class="nav-group-sub collapse">
+                                    @can('index-texts')
+                                        <li class="nav-item nav-item">
+                                            <a href="{{ route('texts.index') }}" class="nav-link">عرض النصوص</a>
+                                        </li>
+                                    @endcan
+                                    @can('create-texts')
+                                        <li class="nav-item nav-item">
+                                            <a href="{{ route('texts.create') }}" class="nav-link">اضافة نص</a>
+                                        </li>
+                                    @endcan
+
+                                </ul>
+                            </li>
+                        @endcanany
+                        @canany(['index-colors', 'create-colors', 'update-colors', 'delete-colors'])
+                            <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link">
+                                    <i class="ph-circles-four"></i>
+                                    <span>الالوان</span>
+                                </a>
+                                <ul class="nav-group-sub collapse">
+                                    @can('index-colors')
+                                        <li class="nav-item nav-item">
+                                            <a href="{{ route('color.index') }}" class="nav-link">عرض الالوان</a>
+                                        </li>
+                                    @endcan
+                                    @can('create-colors')
+                                        <li class="nav-item nav-item">
+                                            <a href="{{ route('color.create') }}" class="nav-link">اضافة لون</a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </li>
+                        @endcanany
+                        @canany(['index-ads', 'create-ads', 'update-ads', 'delete-ads'])
+                            <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link">
+                                    <i class="ph-circles-four"></i>
+                                    <span>الاعلانات</span>
+                                </a>
+
+                                <ul class="nav-group-sub collapse">
+                                    @can('index-ads')
+                                        <li class="nav-item nav-item">
+                                            <a href="{{ route('ads.index') }}" class="nav-link">عرض الاعلانات</a>
+                                        </li>
+                                    @endcan
+                                    @can('create-ads')
+                                        <li class="nav-item nav-item">
+                                            <a href="{{ route('ads.create') }}" class="nav-link">اضافة اعلان</a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </li>
+                        @endcanany
+                        @canany(['create-oquestions'])
+                            <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link">
+                                    <i class="ph-circles-four"></i>
+                                    <span>الاسئلة الاختيارية</span>
+                                </a>
+                                <ul class="nav-group-sub collapse">
+                                    <li class="nav-item nav-item">
+                                        <a href="{{ route('oquestions.index') }}" class="nav-link">عرض الاسئلة
+                                            الاختيارية</a>
+                                    </li>
+                                    <li class="nav-item nav-item">
+                                        <a href="{{ route('oquestions.create') }}" class="nav-link">اضافة سؤال</a>
+                                    </li>
+                                    <li class="nav-item nav-item">
+                                        <a href="{{ route('options.index') }}" class="nav-link">عرض الخيارات</a>
+                                    </li>
+                                    <li class="nav-item nav-item">
+                                        <a href="{{ route('options.create') }}" class="nav-link">اضافة خيار</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endcanany
+                        @canany(['index-iquestions', 'create-iquestions', 'update-iquestions', 'delete-iquestions'])
+                            <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link">
+                                    <i class="ph-circles-four"></i>
+                                    <span>اسئلة الادخال</span>
+                                </a>
+                                <ul class="nav-group-sub collapse">
+                                    @can('index-iquestions')
+                                        <li class="nav-item nav-item">
+                                            <a href="{{ route('iquestions.index') }}" class="nav-link">عرض الاسئلة</a>
+                                        </li>
+                                    @endcan
+                                    @can('create-iquestions')
+                                        <li class="nav-item nav-item">
+                                            <a href="{{ route('iquestions.create') }}" class="nav-link">اضافة سؤال</a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </li>
+                        @endcanany
                         <li class="nav-item nav-item-submenu">
                             <a href="#" class="nav-link">
                                 <i class="ph-circles-four"></i>
@@ -584,35 +599,46 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item nav-item-submenu">
-                            <a href="#" class="nav-link">
-                                <i class="ph-circles-four"></i>
-                                <span>Div</span>
-                            </a>
-                            <ul class="nav-group-sub collapse">
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('divs.index') }}" class="nav-link">عرض ال Divs</a>
-                                </li>
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('divs.create') }}" class="nav-link">اضافة Div</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item nav-item-submenu">
-                            <a href="#" class="nav-link">
-                                <i class="ph-circles-four"></i>
-                                <span>عناصر الناف بار</span>
-                            </a>
-                            <ul class="nav-group-sub collapse">
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('navitems.index') }}" class="nav-link">عرض العناصر</a>
-                                </li>
-                                <li class="nav-item nav-item">
-                                    <a href="{{ route('navitems.create') }}" class="nav-link">اضافة عنصر</a>
-                                </li>
-                            </ul>
-                        </li>
-
+                        @canany(['index-divs', 'create-divs', 'update-divs', 'delete-divs'])
+                            <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link">
+                                    <i class="ph-circles-four"></i>
+                                    <span>Div</span>
+                                </a>
+                                <ul class="nav-group-sub collapse">
+                                    @can('index-divs')
+                                        <li class="nav-item nav-item">
+                                            <a href="{{ route('divs.index') }}" class="nav-link">عرض ال Divs</a>
+                                        </li>
+                                    @endcan
+                                    @can('create-divs')
+                                        <li class="nav-item nav-item">
+                                            <a href="{{ route('divs.create') }}" class="nav-link">اضافة Div</a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </li>
+                        @endcanany
+                        @canany(['create-nav-items', 'create-nav-items', 'create-nav-items', 'create-nav-items'])
+                            <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link">
+                                    <i class="ph-circles-four"></i>
+                                    <span>عناصر الناف بار</span>
+                                </a>
+                                <ul class="nav-group-sub collapse">
+                                    @can('index-nav-items')
+                                        <li class="nav-item nav-item">
+                                            <a href="{{ route('navitems.index') }}" class="nav-link">عرض العناصر</a>
+                                        </li>
+                                    @endcan
+                                    @can('create-nav-items')
+                                        <li class="nav-item nav-item">
+                                            <a href="{{ route('navitems.create') }}" class="nav-link">اضافة عنصر</a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </li>
+                        @endcanany
 
                         <!-- /page kits -->
 
@@ -961,6 +987,10 @@
             </div>
         </div>
         <!-- /demo config -->
+
+        <script src="{{ asset('cms/assets/js/jquery/jquery.min.js') }}"></script>
+        <!-- Load plugin -->
+        <script src="{{ asset('cms/assets/js/vendor/tables/datatables/datatables.min.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"
             integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -971,28 +1001,14 @@
         <script src="{{ asset('cms/assets/js/custom.js') }}"></script>
         <!-- Core JS files -->
         <script src="{{ asset('cms/assets/demo/demo_configurator.js') }}"></script>
+
         <script src="{{ asset('cms/assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
         <!-- /core JS files -->
         <!-- Theme JS files -->
         <script src="{{ asset('cms/assets/demo/pages/dashboard.js') }}"></script>
-
-        <script src="{{ asset('cms/assets/js/jquery/jquery.min.js') }}"></script>
-        <!-- Load plugin -->
-        <script src="{{ asset('cms/assets/js/vendor/tables/datatables/datatables.min.js') }}"></script>
-
-        <script src="{{ asset('cms/assets/demo/charts/pages/dashboard/streamgraph.js') }}"></script>
-        <script src="{{ asset('cms/assets/demo/charts/pages/dashboard/sparklines.js') }}"></script>
-        <script src="{{ asset('cms/assets/demo/charts/pages/dashboard/lines.js') }}"></script>
-        <script src="{{ asset('cms/assets/demo/charts/pages/dashboard/areas.js') }}"></script>
-        <script src="{{ asset('cms/assets/demo/charts/pages/dashboard/donuts.js') }}"></script>
-        <script src="{{ asset('cms/assets/demo/charts/pages/dashboard/bars.js') }}"></script>
-        <script src="{{ asset('cms/assets/demo/charts/pages/dashboard/progress.js') }}"></script>
-        <script src="{{ asset('cms/assets/demo/charts/pages/dashboard/heatmaps.js') }}"></script>
-        <script src="{{ asset('cms/assets/demo/charts/pages/dashboard/pies.js') }}"></script>
-        <script src="{{ asset('cms/assets/demo/charts/pages/dashboard/bullets.js') }}"></script>
         <!-- /theme JS files -->
         <script type="text/javascript" src="{{ asset('cms/assets/js/vendor/pickers/color/spectrum.js') }}"></script>
-        <script></script>
+
         @yield('scripts')
 </body>
 

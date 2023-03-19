@@ -40,7 +40,7 @@ class RoleController extends Controller
         if (!$validator->fails()) {
             $roles = new Role();
             $roles->name = $request->get('name');
-            $roles->guard_name = 'admin';
+            $roles->guard_name = 'web';
 
             $isSaved = $roles->save();
 
@@ -86,7 +86,7 @@ class RoleController extends Controller
         if (!$validator->fails()) {
             $roles = Role::findOrFail($id);
             $roles->name = $request->get('name');
-            $roles->guard_name = 'admin';
+            $roles->guard_name = 'web';
 
             $isUpdate = $roles->save();
             return ['redirect' => route('roles.index')];
