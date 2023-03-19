@@ -97,18 +97,14 @@ class DivController extends Controller
             'content' => 'required',
             'image' => 'nullable',
             'href' => 'nullable',
-            'name' => 'required',
         ], [
             'color_id.required' => ' قيمة حقل اللون مطلوبة ',
-            'name.required' => ' قيمة حقل الاسم مطلوبة ',
             'content.required' => ' قيمة حقل المحتوى مطلوب مطلوبة ',
         ]);
         if (!$validator->fails()) {
             $div->color_id = $request->get('color_id');
-            $div->name = $request->get('name');
             $div->content = $request->get('content');
             $div->href = $request->get('href');
-
             if (request()->hasFile('image')) {
 
                 $image = $request->file('image');

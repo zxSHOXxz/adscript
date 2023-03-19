@@ -12,6 +12,13 @@
             margin-inline: 15px;
             width: 35px;
         }
+
+        .text-ellipsis {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
     </style>
 @endsection
 
@@ -28,8 +35,8 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>محتوى الاعلان</th>
                     <th>مكان الاعلان</th>
+                    <th>محتوى الاعلان</th>
                     <th class="text-center">الاجراءات</th>
                 </tr>
             </thead>
@@ -37,8 +44,13 @@
                 @foreach ($ads as $ad)
                     <tr>
                         <td>{{ $ad->id }}</td>
-                        <td>{{ $ad->content }}</td>
                         <td>{{ $ad->place }}</td>
+                        <td>
+                            <div class="text-ellipsis" style="width: 200px; height: 100px;">
+                                {{ $ad->content }}
+                            </div>
+                        </td>
+
                         <td class="text-center">
                             <div class="d-inline-flex">
                                 <div class="dropdown">

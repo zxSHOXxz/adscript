@@ -153,8 +153,25 @@
             </nav>
         </div>
     </header>
+    @php
+        $ads1 = $ads->where('place', 'header')->first();
+        $ads2 = $ads->where('place', 'center')->first();
+        $ads3 = $ads->where('place', 'footer')->first();
+    @endphp
     <div class="ads-1 p-2 d-flex justify-content-center align-items-center">
-
+        @if ($ads1->content == '#')
+            <div class="container">
+                <div class="img image-cropper-container">
+                    <img src="{{ asset('/storage/images/logo/') }}/{{ $ads1->image }}" alt="logo">
+                </div>
+            </div>
+        @else
+            <div class="container">
+                <div class="row text-wrap">
+                    {{ $ads1->content }}
+                </div>
+            </div>
+        @endif
     </div>
     <div class="ads-manual-1 p-2 d-flex justify-content-center align-items-center">
         <div class="img">
@@ -231,7 +248,20 @@
                 <div class="container">
                     <div class="row">
                         <div class="ads-2 p-2 d-flex justify-content-center align-items-center">
-
+                            @if ($ads2->content == '#')
+                                <div class="container">
+                                    <div class="img image-cropper-container">
+                                        <img src="{{ asset('/storage/images/logo/') }}/{{ $ads2->image }}"
+                                            alt="logo">
+                                    </div>
+                                </div>
+                            @else
+                                <div class="container">
+                                    <div class="row text-wrap">
+                                        {{ $ads2->content }}
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -366,7 +396,20 @@
                 <div class="container">
                     <div class="row">
                         <div class="ads-3 p-2 d-flex justify-content-center align-items-center">
-
+                            @if ($ads3->content == '#')
+                                <div class="container">
+                                    <div class="img image-cropper-container">
+                                        <img src="{{ asset('/storage/images/logo/') }}/{{ $ads3->image }}"
+                                            alt="logo">
+                                    </div>
+                                </div>
+                            @else
+                                <div class="container">
+                                    <div class="row text-wrap">
+                                        {{ $ads3->content }}
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
