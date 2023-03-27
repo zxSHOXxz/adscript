@@ -74,7 +74,7 @@ return [
     |
     */
 
-    'prefix' => '',
+    'prefix' => 'cms/admin/',
 
     'domain' => null,
 

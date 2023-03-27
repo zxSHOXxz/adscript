@@ -5,25 +5,44 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <title> سجل ألان للحصول لتحصل علي فرصة في برنامج المساعدات المالية الخاصة بمنطقتكم,, رابط التسجيل </title>
-    <meta name="keywords" content="سجل الآن لتحصل علي فرصة  في برنامج المساعدات المالية الخاصة بمنطقتكم ">
-    <meta name="description" content=" سجل الآن لتحصل علي فرصة  في برنامج المساعدات المالية الخاصة بمنطقتكم ">
-    <meta name="author" content="بيان">
-    {{-- <meta property="image" content="https://i.imgur.com/EatZyc1.jpg"> --}}
-    <meta property="type" content="article">
-    <meta property="og:title" content="سجل الآن لتحصل علي فرصة  في برنامج المساعدات المالية الخاصة بمنطقتكم">
-    <meta property="og:keywords" content="سجل الآن لتحصل علي فرصة  في برنامج المساعدات المالية الخاصة بمنطقتكم">
-    <meta property="og:description" content="سجل الآن لتحصل علي فرصة  في برنامج المساعدات المالية الخاصة بمنطقتكم">
-    {{-- <meta property="og:image" content="https://i.imgur.com/i0yGkZL.png"> --}}
+     @php
+        $logoHref = $divs->where('name', 'logo')->first();
+        $imageMeta = $divs->where('name', 'imageMeta')->first();
+        $ogImage = $divs->where('name', 'ogImage')->first();
+        $typeMeta = $divs->where('name', 'typeMeta')->first();
+        $ogKeywords = $divs->where('name', 'ogKeywords')->first();
+        $ogTitle = $divs->where('name', 'og:title')->first();
+        $ogUrl = $divs->where('name', 'og:url')->first();
+        $ogType = $divs->where('name', 'og:type')->first();
+        $fbApp_id = $divs->where('name', 'fb:app_id')->first();
+        $ogDescription = $divs->where('name', 'og:description')->first();
+        $metaKeywords = $divs->where('name', 'meta:keywords')->first();
+        $metaDescription = $divs->where('name', 'meta:description')->first();
+        $metaAuthor = $divs->where('name', 'meta:author')->first();
+        $metaTitle = $divs->where('name', 'meta:title')->first();
+    @endphp
+    <title>{{ $metaTitle->content }}</title>
+    <meta name="keywords" content="{{ $metaKeywords->content }}">
+    <meta name="description" content="{{ $metaDescription->content }}">
+    <meta name="author" content="{{ $metaAuthor->content }}">
+    <meta property="image" content="{{ asset('/storage/images/logo/') }}/{{ $imageMeta->image }}">
+    <meta property="type" content="{{ $typeMeta->content }}">
+    <meta property="og:title" content="{{ $ogTitle->content }}">
+    <meta property="og:keywords" content="{{ $ogKeywords->content }}">
+    <meta property="og:description" content="{{ $ogDescription->content }}">
+    <meta property="og:image" content="{{ asset('/storage/images/logo/') }}/{{ $ogImage->image }}">
+    <meta property="og:url" content="{{ $ogUrl->href }}" />
+    <meta property="og:type" content="{{ $ogType->content }}" />
+    <meta property="fb:app_id" content="{{ $fbApp_id->content }}" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{-- <link rel="icon" href="https://i.imgur.com/i0yGkZL.png"> --}}
+    <link rel="icon" href="{{ asset('/storage/images/logo/') }}/{{ $logoHref->image }}">
+    
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="{{ asset('cms/assets/css/all.min.css') }}" id="stylesheet" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('front/css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css">
 
@@ -35,7 +54,10 @@
             box-sizing: border-box;
             scroll-behavior: smooth;
         }
-
+        .image-cropper-container{
+            overflow : hidden !important;
+            max-height: 15vh;
+        }
         a {
             display: inline-block;
             text-decoration: none;
@@ -48,7 +70,8 @@
 
         body {
             overflow-y: auto !important;
-            direction: ltr !important;
+            padding : 0 !important;
+            
         }
 
         body,
@@ -115,6 +138,24 @@
             font-family: tahoma;
             font-size: 13px;
         }
+        .radio label {
+        display: inline-block;
+        margin: 0 -1px 10px 0 !important;
+        width: 100%;
+        font-weight: bold;
+        border-radius: 4px;
+        background-color: #a32459;
+        color: #fff;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+        transition: 0.4s ease-in-out;
+        box-shadow: -2px 2px 8px 3px rgb(0 0 0 / 75%);
+        -webkit-box-shadow: -2px 2px 8px 3px rgb(0 0 0 / 75%);
+        -moz-box-shadow: -2px 2px 8px 3px rgb(0 0 0 / 75%);
+        }
     </style>
 
 </head>
@@ -126,25 +167,21 @@
         $optionBackGround = $divs->where('name', 'options')->first();
         $confirmBtn = $divs->where('name', 'confirmBtn')->first();
     @endphp
-    <header style="background-color: {{ $navBarBackGround->color->color_number }}">
+    <header class="" style="background-color: {{ $navBarBackGround->color->color_number}};         display: flex;
+    align-items: center;">
         <div class="container-fluid">
-            <nav style="" class="nav align-items-center py-2 px-5">
+            <nav style="" class="nav d-flex align-items-center">
                 <div class="logo">
                     <a href="{{ route('index.index') }}">
-                        @php
-                            $logoHref = $divs->where('name', 'logo')->first();
-                        @endphp
                         <img src="{{ asset('/storage/images/logo/') }}/{{ $logoHref->image }}" alt="logo">
                     </a>
                 </div>
                 <div class="nav-links w-75">
-                    <ul class="nav-link d-flex flex-md-row flex-sm-column flex-wrap gap-1 m-0">
+                    <ul class="nav-link d-flex flex-md-row flex-sm-column flex-wrap align-items-center gap-1 m-0">
                         @foreach ($items as $item)
                             <li class="nav-item bg-light p-2 rounded-2 text-wrap"
                                 style="background-color: {{ $item->background }} !important">
-                                <a href="{{ $item->href }}" style="color: {{ $item->color }};">فرصة
-                                    ذهبية للحصول على مكافأة
-                                    مالية</a>
+                                <a href="{{ $item->href }}" style="color: {{ $item->color }};">{{ $item->content }}</a>
                             </li>
                         @endforeach
                     </ul>
@@ -157,6 +194,7 @@
         $ads1 = $ads->where('place', 'header')->first();
         $ads2 = $ads->where('place', 'center')->first();
         $ads3 = $ads->where('place', 'footer')->first();
+        $manualAd = $divs->where('name', 'manualAd')->first();
     @endphp
     <div class="ads-1 p-2 d-flex justify-content-center align-items-center">
         @if ($ads1->content == '#')
@@ -168,22 +206,20 @@
         @else
             <div class="container">
                 <div class="row text-wrap">
-                    {{ $ads1->content }}
+                    {!! $ads1->content !!}
+
                 </div>
             </div>
         @endif
     </div>
     <div class="ads-manual-1 p-2 d-flex justify-content-center align-items-center">
-        <div class="img">
-            <a href="https://i.imgur.com/di86pvc.jpeg">
-                <img src="{{ asset('cms/assets/images/backgrounds/boxed_bg.png') }}" alt="">
-            </a>
+        <div class="img d-flex justify-content-center align-items-center"  style="width: 400px; height: 300px;">
+                <img src="{{ asset('/storage/images/logo/') }}/{{ $manualAd->image }}"  style="width: 300px; height: 100%; object-fit: contain;" alt="">
         </div>
     </div>
     {{-- content  --}}
     <div class="wrapper_02">
         <div class="container-fluid">
-            <div class="row justify-content-center">
                 {{-- اول نص --}}
                 <div class="row">
                     <div class="col justify-content-center p-4">
@@ -209,12 +245,12 @@
                         <div id="fb-root"></div>
                         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v11.0"
                             nonce="KUAoRfrT"></script>
-                        <div class="col-md-1 col-sm-6 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-end">
                             <div class="fb-like" data-href="https://www.facebook.com/mos3dat3ajel/?ref=page_internal"
                                 data-width="75" data-layout="box_count" data-action="like" data-size="large"
                                 data-share="true" data-colorscheme="light"></div>
                         </div>
-                        <div class="col-md-1 col-sm-6 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-start">
                             <div class="fb-like" data-href="https://www.facebook.com/d3m.faker" data-width="75"
                                 data-layout="box_count" data-action="like" data-size="large" data-share="true"
                                 data-colorscheme="dark"></div>
@@ -247,7 +283,7 @@
                 {{-- اعلان ثاني  --}}
                 <div class="container">
                     <div class="row">
-                        <div class="ads-2 p-2 d-flex justify-content-center align-items-center">
+                        <div class="ads-2 p-2 d-flex justify-content-center align-items-center text-center">
                             @if ($ads2->content == '#')
                                 <div class="container">
                                     <div class="img image-cropper-container">
@@ -257,8 +293,8 @@
                                 </div>
                             @else
                                 <div class="container">
-                                    <div class="row text-wrap">
-                                        {{ $ads2->content }}
+                                    <div class="row d-flex justify-content-center align-items-center text-wrap">
+                                        {!! $ads2->content !!}
                                     </div>
                                 </div>
                             @endif
@@ -386,15 +422,15 @@
                                 src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v16.0&appId=168488442265796&autoLogAppEvents=1"
                                 nonce="5e6pYZhX"></script>
                             <div class="fb-comments" data-href="https://gazatodaycom.com" data-width="100%"
-                                data-numposts="70"></div>
+                                data-numposts="10"></div>
                         </div>
                     </div>
                 </div>
 
                 {{-- نهاية التعليقات  --}}
 
-                <div class="container">
                     <div class="row">
+                <div class="container">
                         <div class="ads-3 p-2 d-flex justify-content-center align-items-center">
                             @if ($ads3->content == '#')
                                 <div class="container">
@@ -405,8 +441,8 @@
                                 </div>
                             @else
                                 <div class="container">
-                                    <div class="row text-wrap">
-                                        {{ $ads3->content }}
+                                    <div class="row d-flex justify-content-center align-items-center text-wrap">
+                                        {!! $ads3->content !!}
                                     </div>
                                 </div>
                             @endif
@@ -415,11 +451,44 @@
                 </div>
 
             </div>
+                      @php
+                $google = $divs->where('name', 'google analytics')->first();
+                $his = $divs->where('name', 'his')->first();
+                $privace = $divs->where('name', 'الحقوق')->first();
+                $footer = $divs->where('name', 'الفوتر')->first();
+            @endphp
+
         </div>
+                        <footer style="background-color: {{ $footer->color->color_number }}; height: auto !important;">
+                <div class="container">
+                    <div class="row d-flex justify-content-center align-items-center">
 
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+                        <div class="col d-flex justify-content-center align-items-center text-center">
+                            <!-- العمود الأول -->
+                            {!! $google->content !!}
+                            <!-- تعبئة العمود الأول هنا -->
+                        </div>
+                        <div class="col text-center" style="color: {{ $privace->color->color_number }}">
+                            <!-- العمود الثاني -->
+                            {{ $privace->content }}
+                            <!-- تعبئة العمود الثاني هنا -->
+                        </div>
+                        <div class="col d-flex d-flex justify-content-center align-items-center text-center">
+                            <!-- العمود الثالث -->
+                            {!! $his->content !!}
+                            <!-- تعبئة العمود الثالث هنا -->
+                        </div>
+                    </div>
+                </div>
+            </footer>
+    
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+            integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
         </script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"

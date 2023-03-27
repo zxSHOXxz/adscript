@@ -21,9 +21,9 @@ class VisitorController extends Controller
      */
     public function index(Request $request)
     {
-        $iquestions = Iquestion::orderBy('id', 'asc')->get();
+        $iquestions = Iquestion::orderBy('order', 'asc')->get();
         $oquestions = Oquestion::with('options')
-            ->orderBy('id', 'asc')->get();
+            ->orderBy('order', 'asc')->get();
         $options = Option::all();
         $visitors = Visitor::with('answers')
             ->when($request->created_at, function ($query, $value) {
@@ -32,7 +32,7 @@ class VisitorController extends Controller
                 $query->whereBetween('created_at', [$startDate, $endDate]);
             })
             ->orderBy('id', 'desc')
-            ->get();
+            ->paginate(700);
         return view('cms.visitors.index', compact('options', 'iquestions', 'oquestions', 'visitors'));
     }
 

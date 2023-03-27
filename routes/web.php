@@ -33,6 +33,12 @@ Route::get('/final', [FrontController::class, 'final'])->name('front.final');
 Route::resource('index', FrontController::class);
 
 Route::prefix('cms/admin')->middleware(['auth:web', 'verified'])->group(function () {
+    
+   
+    Route::get('/', function () {
+        return view('cms.master');
+    });
+
 
     Route::resource('users', UserController::class);
     Route::post('users_update/{user}', [UserController::class, 'update'])->name('users_update');
@@ -75,11 +81,7 @@ Route::prefix('cms/admin')->middleware(['auth:web', 'verified'])->group(function
     Route::resource('roles.permissions', RolePermissionController::class);
 });
 
-Route::middleware([
-    'auth:sanctum',
-
-    'verified'
-])->group(function () {
+Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('auth.login');
     })->name('dashboard');
