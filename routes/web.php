@@ -16,7 +16,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisitorController;
 use Illuminate\Support\Facades\Route;
 
-/*  
+/*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -33,11 +33,9 @@ Route::get('/final', [FrontController::class, 'final'])->name('front.final');
 Route::resource('index', FrontController::class);
 
 Route::prefix('cms/admin')->middleware(['auth:web', 'verified'])->group(function () {
-    
-   
-    Route::get('/', function () {
-        return view('cms.master');
-    });
+
+
+    Route::get('/', [FrontController::class , 'dashboard'])->name('main');
 
 
     Route::resource('users', UserController::class);

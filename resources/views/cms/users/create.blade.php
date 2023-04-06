@@ -1,8 +1,8 @@
 @extends('cms.master')
-@section('title', 'Divs')
+@section('title', 'المستخدمين')
 
-@section('tittle_1', ' اضافة Div ')
-@section('tittle_2', ' اضافة Div ')
+@section('tittle_1', ' اضافة مستخدم ')
+@section('tittle_2', ' اضافة مستخدم ')
 
 
 @section('styles')
@@ -21,14 +21,14 @@
     <!-- Basic datatable -->
     <div class="card">
         <div class="card-header">
-            <h5 class="mb-0">اضافة Div</h5>
+            <h5 class="mb-0">اضافة مستخدم</h5>
         </div>
 
         <div class="card-body">
             <!-- Right aligned buttons -->
             <div class="card">
                 <div class="card-header">
-                    <h6 class="mb-0"> اضافة Div </h6>
+                    <h6 class="mb-0"> اضافة مستخدم </h6>
                 </div>
                 <div class="card-body">
                     <form action="#">
@@ -44,13 +44,6 @@
                             <label class="form-label">الباسوورد</label>
                             <input type="password" name="password" id="password" class="form-control"
                                 placeholder="كلمة المرور">
-                        </div>
-                        <div class="row mb-3">
-                            <label class="col-form-label col-lg-3">صورة</label>
-                            <div class="col-lg-9">
-                                <input type="file" id="image" name="image" class="form-control" accept="image/*">
-                                <div class="form-text">ادخل صورة</div>
-                            </div>
                         </div>
                         <div class="mb-3">
                             <div class="mb-3 row">
@@ -97,8 +90,6 @@
             formData.append('email', document.getElementById('email').value);
             formData.append('password', document.getElementById('password').value);
             formData.append('role_id', document.getElementById('role_id').value);
-            formData.append('image', document.getElementById('image').files[0]);
-
             store('/cms/admin/users', formData);
         }
         /* ------------------------------------------------------------------------------
@@ -137,7 +128,7 @@
                     }],
                     dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
                     language: {
-                        search: '<span class="me-3">Filter:</span> <div class="form-control-feedback form-control-feedback-end flex-fill">_INPUT_<div class="form-control-feedback-icon"><i class="ph-magnifying-glass opacity-50"></i></div></div>',
+                        search: '<span class="me-3">Filter:</span> <div class="form-control-feedback form-control-feedback-end flex-fill">_INPUT_<div class="form-control-feedback-icon"><i class="opacity-50 ph-magnifying-glass"></i></div></div>',
                         searchPlaceholder: 'Type to filter...',
                         lengthMenu: '<span class="me-3">Show:</span> _MENU_',
                         paginate: {

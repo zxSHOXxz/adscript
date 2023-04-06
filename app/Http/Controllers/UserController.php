@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::get();
+        return view('cms.users.index', compact('users'));
     }
 
     /**
@@ -73,7 +74,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('cms.users.edit', compact('user'));
     }
 
     /**
@@ -81,7 +83,24 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validator = validator($request->all(), [
+            'email' => 'required|email',
+        ]);
+        if (!$validator->fails()) {
+            $user = User::findOrFail($id);
+            $user->name = $request->get('name');
+            $user->email = $request->get('email');
+            $roles = Role::findOrFail($request->get('role_id'));
+            $user->assignRole($roles);
+            $isSaved = $user->save();
+            if ($isSaved) {
+                return response()->json(['icon' => 'success', 'title' => 'تمت الإضافة بنجاح'], 200);
+            } else {
+                return response()->json(['icon' => 'error', 'title' => 'فشلت عملية الاضافة '], 400);
+            }
+        } else {
+            return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
+        }
     }
 
     /**
@@ -89,6 +108,6 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::destroy($id);
     }
 }

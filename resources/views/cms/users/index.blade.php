@@ -1,8 +1,8 @@
 @extends('cms.master')
-@section('title', 'Divs')
+@section('title', 'المستخدمين')
 
-@section('tittle_1', ' عرض Divs ')
-@section('tittle_2', ' عرض Divs ')
+@section('tittle_1', ' عرض المستخدمين ')
+@section('tittle_2', ' عرض المستخدمين ')
 
 
 @section('styles')
@@ -29,21 +29,22 @@
                 <tr>
                     <th>#</th>
                     <th>الاسم</th>
-                    <th>محتوى Div</th>
-                    <th>لون Div</th>
+                    <th>الرتبة</th>
                     <th class="div-center">الاجراءات</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($divs as $div)
+                @foreach ($users as $user)
                     <tr>
-                        <td>{{ $div->id }}</td>
-                        <td>{{ $div->name }}</td>
-                        <td>{{ $div->content }}</td>
-                        <td class="d-flex justify-content-start gap-2 align-items-center">{{ $div->color->color_number }}
-                            <div class="color" style="background-color: {{ $div->color->color_number }}">
-
-                            </div>
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>
+                            @php
+                                $roles = $user->roles;
+                                foreach ($roles as $role) {
+                                    echo $role->name;
+                                }
+                            @endphp
                         </td>
                         <td class="div-center">
                             <div class="d-inline-flex">
@@ -53,11 +54,11 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="{{ route('divs.edit', $div->id) }}" class="dropdown-item">
+                                        <a href="{{ route('users.edit', $user->id) }}" class="dropdown-item">
                                             <i class="ph-file-doc me-2"></i>
                                             تعديل
                                         </a>
-                                        <a href="#" onclick="performDestroy({{ $div->id }},this)"
+                                        <a href="#" onclick="performDestroy({{ $user->id }},this)"
                                             class="dropdown-item">
                                             <i class="ph-file-doc me-2"></i>
                                             حذف
@@ -122,7 +123,7 @@
                     }],
                     dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
                     language: {
-                        search: '<span class="me-3">Filter:</span> <div class="form-control-feedback form-control-feedback-end flex-fill">_INPUT_<div class="form-control-feedback-icon"><i class="ph-magnifying-glass opacity-50"></i></div></div>',
+                        search: '<span class="me-3">Filter:</span> <div class="form-control-feedback form-control-feedback-end flex-fill">_INPUT_<div class="form-control-feedback-icon"><i class="opacity-50 ph-magnifying-glass"></i></div></div>',
                         searchPlaceholder: 'Type to filter...',
                         lengthMenu: '<span class="me-3">Show:</span> _MENU_',
                         paginate: {
