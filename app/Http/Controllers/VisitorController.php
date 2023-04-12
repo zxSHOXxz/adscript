@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\VisitorsExport;
+use App\Models\Answer;
 use App\Models\Iquestion;
 use App\Models\Option;
 use App\Models\Oquestion;
@@ -33,7 +34,8 @@ class VisitorController extends Controller
             })
             ->orderBy('id', 'desc')
             ->paginate(700);
-        return view('cms.visitors.index', compact('options', 'iquestions', 'oquestions', 'visitors'));
+        $answers = Answer::with('visitor')->get();
+        return view('cms.visitors.index', compact('options', 'iquestions', 'answers', 'oquestions', 'visitors'));
     }
 
     public function export(Request $request)
@@ -42,7 +44,9 @@ class VisitorController extends Controller
         $oquestions = Oquestion::with('options')->orderBy('id', 'asc')->get();
         $query = Visitor::with('answers')
             ->when($request->created_at, function ($query, $value) {
-                $query->where('created_at', '>=', "%{$value}%");
+                $startDate = Carbon::parse($value)->startOfDay();
+                $endDate = Carbon::now();
+                $query->whereBetween('created_at', [$startDate, $endDate]);
             });
         $export = new VisitorsExport($iquestions, $oquestions);
         $export->setQuery($query);

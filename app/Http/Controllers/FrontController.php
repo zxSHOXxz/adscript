@@ -48,7 +48,17 @@ class FrontController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $validator = validator($request->all(), [], []);
+        $validator = validator(
+            $request->all(),
+            [
+                'iquestion4' => 'numeric|min:10|max:15',
+            ],
+            [
+                'iquestion4.numeric' => 'يجب ان يتكون رقم الهاتف من ارقام',
+                'iquestion4.min' => 'يجب ان يتكون رقم الهاتف على الاقل من 10 ارقام',
+                'iquestion4.max' => 'يجب ان يتكون رقم الهاتف على الاكثر من 15 ارقام'
+            ]
+        );
         if (!$validator->fails()) {
             $visitor = new Visitor();
             $visitor->ip_address = $request->ip();

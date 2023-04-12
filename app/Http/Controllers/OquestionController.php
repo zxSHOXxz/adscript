@@ -37,9 +37,12 @@ class OquestionController extends Controller
         if (!$validator->fails()) {
             $oquestion = new Oquestion();
             $oquestion->content = $request->get('content');
+            $oquestion->order = 999;
+            $isSaved = $oquestion->save();
             $oquestion->order = $oquestion->id;
             $isSaved = $oquestion->save();
             if ($isSaved) {
+                $isSaved = $oquestion->save();
                 return response()->json(['icon' => 'success', 'title' => "تمت عملية التخزين"], 200);
             } else {
                 return response()->json(['icon' => 'error', 'title' => "فشلت عملية التخزين"], 400);

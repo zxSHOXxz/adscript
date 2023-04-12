@@ -37,7 +37,7 @@
                             @if (request()->created_at) value={{ request()->created_at }} @endif />
                     </div>
 
-                    <div class="col mt-4 d-flex gap-2 align-items-center justify-content-end">
+                    <div class="gap-2 mt-4 col d-flex align-items-center justify-content-end">
                         <button class="btn btn-danger btn-md submit" type="submit">Filter</button>
                         <a href="{{ route('visitors.index') }}" type="button" class="btn btn-info">إنهاء
                             البحث </a>
@@ -51,12 +51,22 @@
                     <th>#</th>
                     <th>ip</th>
                     <th>تاريخ الزيارة</th>
-                    @foreach ($oquestions as $oqusetion)
-                        <th>{{ $oqusetion->content ?? 'عذرا لا يوجد بيانات' }}</th>
-                    @endforeach
-                    @foreach ($iquestions as $iqusetion)
-                        <th>{{ $iqusetion->content ?? 'عذرا لا يوجد بيانات' }}</th>
-                    @endforeach
+                    @php
+                        $status = $oquestions->where('content', 'الحالة الاجتماعية')->first();
+                        $old = $oquestions->where('content', 'العمر')->first();
+                        $mosa3dat = $oquestions->where('content', 'هل استفدت مسبقا من المساعدات')->first();
+                        $family = $iquestions->where('content', 'عدد افراد الاسرة')->first();
+                        $name = $iquestions->where('content', 'الاسم رباعي')->first();
+                        $country = $iquestions->where('content', 'الدولة')->first();
+                        $mobile = $iquestions->where('content', 'رقم الهاتف')->first();
+                    @endphp
+                    <th>{{ $status->content ?? 'عذرا لا يوجد بيانات' }}</th>
+                    <th>{{ $old->content ?? 'عذرا لا يوجد بيانات' }}</th>
+                    <th>{{ $mosa3dat->content ?? 'عذرا لا يوجد بيانات' }}</th>
+                    <th>{{ $family->content ?? 'عذرا لا يوجد بيانات' }}</th>
+                    <th>{{ $name->content ?? 'عذرا لا يوجد بيانات' }}</th>
+                    <th>{{ $country->content ?? 'عذرا لا يوجد بيانات' }}</th>
+                    <th>{{ $mobile->content ?? 'عذرا لا يوجد بيانات' }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -65,33 +75,46 @@
                         <td>{{ $visitor->id ?? 'عذرا لا يوجد بيانات' }}</td>
                         <td>{{ $visitor->ip_address ?? 'عذرا لا يوجد بيانات' }}</td>
                         <td>{{ $visitor->created_at ?? 'عذرا لا يوجد بيانات' }}</td>
-
                         @php
-                            $dif = 0;
-                            $oquestions_answers = $visitor->answers->where('question_type', 'App\Models\Oquestion')->all();
-                            $iquestions_answers = $visitor->answers->where('question_type', 'App\Models\Iquestion')->all();
-                            if (count($visitor->answers) !== count($oquestions) + count($iquestions)) {
-                                $dif = count($oquestions) + count($iquestions) - count($visitor->answers);
-                            }
+                            $satusAns = $visitor->answers
+                                ->where('question_type', 'App\Models\Oquestion')
+                                ->where('question_id', '1')
+                                ->first();
+                            $statusAnsContent = $options->where('id', $satusAns->content)->first();
+                            $oldAns = $visitor->answers
+                                ->where('question_type', 'App\Models\Oquestion')
+                                ->where('question_id', '2')
+                                ->first();
+                            $oldAnsContent = $options->where('id', $oldAns->content)->first();
+                            $mosa3datAns = $visitor->answers
+                                ->where('question_type', 'App\Models\Oquestion')
+                                ->where('question_id', '3')
+                                ->first();
+                            $mosa3datAnsContent = $options->where('id', $mosa3datAns->content)->first();
+                            $familyAns = $visitor->answers
+                                ->where('question_type', 'App\Models\Iquestion')
+                                ->where('question_id', '1')
+                                ->first();
+                            $nameAns = $visitor->answers
+                                ->where('question_type', 'App\Models\Iquestion')
+                                ->where('question_id', '2')
+                                ->first();
+                            $countryAns = $visitor->answers
+                                ->where('question_type', 'App\Models\Iquestion')
+                                ->where('question_id', '3')
+                                ->first();
+                            $mobileAns = $visitor->answers
+                                ->where('question_type', 'App\Models\Iquestion')
+                                ->where('question_id', '4')
+                                ->first();
                         @endphp
-
-                        @foreach ($oquestions_answers as $answer)
-                            <td>
-                                @php
-                                    $content = $options->where('id', $answer->content)->first();
-                                @endphp
-                                {{ $content->content ?? 'عذرا لا يوجد بيانات' }}
-                            </td>
-                        @endforeach
-
-                        @foreach ($iquestions_answers as $answer)
-                            <td>{{ $answer->content ?? 'عذرا لا يوجد بيانات' }}</td>
-                        @endforeach
-                        @if ($dif > 0)
-                            @for ($i = 0; $i < $dif; $i++)
-                                <td>عذرا لا يوجد بيانات</td>
-                            @endfor
-                        @endif
+                        <td> {{ $statusAnsContent->content }} </td>
+                        <td> {{ $oldAnsContent->content }} </td>
+                        <td> {{ $mosa3datAnsContent->content }} </td>
+                        <td> {{ $familyAns->content }} </td>
+                        <td> {{ $nameAns->content }} </td>
+                        <td> {{ $countryAns->content }} </td>
+                        <td> {{ $mobileAns->content }} </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -162,7 +185,7 @@
                     }],
                     dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
                     language: {
-                        search: '<span class="me-3">Filter:</span> <div class="form-control-feedback form-control-feedback-end flex-fill">_INPUT_<div class="form-control-feedback-icon"><i class="ph-magnifying-glass opacity-50"></i></div></div>',
+                        search: '<span class="me-3">Filter:</span> <div class="form-control-feedback form-control-feedback-end flex-fill">_INPUT_<div class="form-control-feedback-icon"><i class="opacity-50 ph-magnifying-glass"></i></div></div>',
                         searchPlaceholder: 'Type to filter...',
                         lengthMenu: '<span class="me-3">Show:</span> _MENU_',
                         paginate: {
