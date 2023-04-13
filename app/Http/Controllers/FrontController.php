@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ad;
 use App\Models\Answer;
+use App\Models\Country;
 use App\Models\Div;
 use App\Models\Iquestion;
 use App\Models\NavItem;
@@ -26,7 +27,8 @@ class FrontController extends Controller
         $divs = Div::all();
         $texts = Text::all();
         $ads = Ad::all();
-        return view('front.index', compact('oquestions', 'iquestions', 'divs', 'items', 'texts', 'ads'));
+        $contries = Country::orderBy('name', 'asc')->get();
+        return view('front.index', compact('contries', 'oquestions', 'iquestions', 'divs', 'items', 'texts', 'ads'));
     }
 
     public function final()

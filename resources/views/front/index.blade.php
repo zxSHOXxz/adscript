@@ -63,7 +63,7 @@
             object-fit: contain;
         }
 
-        .image-cropper-container.img img{
+        .image-cropper-container.img img {
             object-fit: contain;
             height: 100%;
             width: 100%;
@@ -354,14 +354,42 @@
                                             <div class="question">
                                                 <h3 class="text-center"> {{ $text5->content }}</h3>
                                                 @foreach ($iquestions as $iquestion)
-                                                    <div class="p-2 input-group">
-                                                        <span
-                                                            class="input-group-text">{{ $iquestion->content }}</span>
-                                                        <input type="text" placeholder="{{ $iquestion->content }}"
-                                                            aria-label="{{ $iquestion->content }}"
-                                                            class="form-control" id="iquestion{{ $iquestion->id }}"
-                                                            name="iquestion{{ $iquestion->id }}" required>
-                                                    </div>
+                                                    @if ($iquestion->id == '3')
+                                                        <div class="p-2 input-group">
+                                                            <span
+                                                                class="input-group-text">{{ $iquestion->content }}</span>
+                                                            <select style="direction: ltr"
+                                                                name="iquestion{{ $iquestion->id }}"
+                                                                id="iquestion{{ $iquestion->id }}">
+                                                                @foreach ($contries as $country)
+                                                                    <option value="{{ $country->name }}">
+                                                                        {{ $country->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    @elseif ($iquestion->id == '4')
+                                                        <div class="p-2 input-group">
+                                                            <span
+                                                                class="input-group-text">{{ $iquestion->content }}</span>
+                                                            <input type="number"
+                                                                placeholder="{{ $iquestion->content }}"
+                                                                aria-label="{{ $iquestion->content }}"
+                                                                class="form-control"
+                                                                id="iquestion{{ $iquestion->id }}"
+                                                                name="iquestion{{ $iquestion->id }}" required>
+                                                        </div>
+                                                    @else
+                                                        <div class="p-2 input-group">
+                                                            <span
+                                                                class="input-group-text">{{ $iquestion->content }}</span>
+                                                            <input type="text"
+                                                                placeholder="{{ $iquestion->content }}"
+                                                                aria-label="{{ $iquestion->content }}"
+                                                                class="form-control"
+                                                                id="iquestion{{ $iquestion->id }}"
+                                                                name="iquestion{{ $iquestion->id }}" required>
+                                                        </div>
+                                                    @endif
                                                 @endforeach
                                             </div>
                                         </div>

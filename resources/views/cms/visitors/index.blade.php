@@ -114,7 +114,7 @@
                         <td> {{ $familyAns->content }} </td>
                         <td> {{ $nameAns->content }} </td>
                         <td> {{ $countryAns->content }} </td>
-                        <td> {{ $mobileAns->content }} </td>
+                        <td> {{ $countryAns->content . $mobileAns->content }} </td>
                     </tr>
                 @endforeach
             </tbody>
