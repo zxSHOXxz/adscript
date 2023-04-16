@@ -103,6 +103,7 @@
                                 ->where('question_type', 'App\Models\Iquestion')
                                 ->where('question_id', '3')
                                 ->first();
+                            $countryCode = $countries->where('name', $countryAns->content)->first();
                             $mobileAns = $visitor->answers
                                 ->where('question_type', 'App\Models\Iquestion')
                                 ->where('question_id', '4')
@@ -114,7 +115,10 @@
                         <td> {{ $familyAns->content }} </td>
                         <td> {{ $nameAns->content }} </td>
                         <td> {{ $countryAns->content }} </td>
-                        <td> {{ $countryAns->content . $mobileAns->content }} </td>
+                        <td> <a href="https://wa.me/{{ $countryCode->dialCode . $mobileAns->content }}"
+                                class="gap-1 text-white btn d-flex fw-bold" style="background-color: #25d366;"><i
+                                    class="fab fa-whatsapp "></i>
+                                {{ $countryCode->dialCode . $mobileAns->content }} </a></td>
                     </tr>
                 @endforeach
             </tbody>

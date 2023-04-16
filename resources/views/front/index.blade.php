@@ -358,12 +358,12 @@
                                                         <div class="p-2 input-group">
                                                             <span
                                                                 class="input-group-text">{{ $iquestion->content }}</span>
-                                                            <select style="direction: ltr"
-                                                                name="iquestion{{ $iquestion->id }}"
-                                                                id="iquestion{{ $iquestion->id }}">
-                                                                @foreach ($contries as $country)
+                                                            <select style="direction: ltr" class="iquestion"
+                                                                name="iquestion3" id="iquestion3">
+                                                                @foreach ($countries as $country)
                                                                     <option value="{{ $country->name }}">
-                                                                        {{ $country->name }}</option>
+                                                                        {{ $country->name }}
+                                                                        ({{ $country->dialCode }})</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -374,9 +374,8 @@
                                                             <input type="number"
                                                                 placeholder="{{ $iquestion->content }}"
                                                                 aria-label="{{ $iquestion->content }}"
-                                                                class="form-control"
-                                                                id="iquestion{{ $iquestion->id }}"
-                                                                name="iquestion{{ $iquestion->id }}" required>
+                                                                class="form-control iquestion" id="iquestion4"
+                                                                name="iquestion4" required>
                                                         </div>
                                                     @else
                                                         <div class="p-2 input-group">
@@ -385,7 +384,7 @@
                                                             <input type="text"
                                                                 placeholder="{{ $iquestion->content }}"
                                                                 aria-label="{{ $iquestion->content }}"
-                                                                class="form-control"
+                                                                class="form-control iquestion"
                                                                 id="iquestion{{ $iquestion->id }}"
                                                                 name="iquestion{{ $iquestion->id }}" required>
                                                         </div>
@@ -445,7 +444,7 @@
                                 </div>
                                 <div class="col d-flex justify-content-center align-items-center">
                                     <a class="gap-2 btn d-flex justify-content-center align-items-center"
-                                        href="https://api.whatsapp.com/send?text={{ $whatsappMessage->content }}{{ $whatsappMessage->href }}"
+                                        href="https://api.whatsapp.com/send?text={{ $whatsappMessage->content }}%0A{{ $whatsappMessage->href }}"
                                         target="_blank" rel="noopener noreferrer">مشاركة على الواتس اب
                                         <i class="fa-2x fa-brands fa-whatsapp" style="color: #25D366;"></i>
                                     </a>
@@ -599,7 +598,7 @@
             for (const key in answers) {
                 formData.append(key, answers[key]);
             }
-            let question = document.querySelectorAll('.question input[type="text"]')
+            let question = document.querySelectorAll('.question .iquestion')
             question.forEach(element => {
                 formData.append(element.name, element.value);
             });
@@ -640,7 +639,7 @@
                 localStorage.setItem('count', count);
             }
             confirmBtn.addEventListener('click', _ => {
-                if (count === 5) {
+                if (count >= 5) {
                     // إذا كان العدد يساوي 5، يتم التحويل إلى الصفحة المطلوبة
                     window.location.href = confirmBtn.dataset.hh;
                 } else {

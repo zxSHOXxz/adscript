@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\VisitorsExport;
 use App\Models\Answer;
+use App\Models\Country;
 use App\Models\Iquestion;
 use App\Models\Option;
 use App\Models\Oquestion;
@@ -35,7 +36,9 @@ class VisitorController extends Controller
             ->orderBy('id', 'desc')
             ->paginate(700);
         $answers = Answer::with('visitor')->get();
-        return view('cms.visitors.index', compact('options', 'iquestions', 'answers', 'oquestions', 'visitors'));
+        $countries = Country::orderBy('name', 'asc')->get();
+
+        return view('cms.visitors.index', compact('countries', 'options', 'iquestions', 'answers', 'oquestions', 'visitors'));
     }
 
     public function export(Request $request)
