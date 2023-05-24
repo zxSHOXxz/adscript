@@ -116,6 +116,11 @@
                 // Setting datatable defaults
                 $.extend($.fn.dataTable.defaults, {
                     autoWidth: false,
+                    lengthMenu: [
+                        [100, 200, 300, 400, 500],
+                        [100, 200, 300, 400, 500]
+                    ],
+                    pageLength: 100,
                     columnDefs: [{
                         orderable: false,
                         width: 100,

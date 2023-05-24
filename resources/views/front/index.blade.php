@@ -90,6 +90,12 @@
 
         }
 
+        .ads-1,
+        .ads-2,
+        .ads-3 {
+            overflow: hidden;
+        }
+
         body,
         a,
         p,
@@ -363,7 +369,8 @@
                                                                 @foreach ($countries as $country)
                                                                     <option value="{{ $country->name }}">
                                                                         {{ $country->name }}
-                                                                        ({{ $country->dialCode }})</option>
+                                                                        ({{ $country->dialCode }})
+                                                                    </option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -471,8 +478,9 @@
                             src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v16.0&appId=168488442265796&autoLogAppEvents=1"
                             nonce="5e6pYZhX"></script>
                         <div class="fb-comments" data-href="https://gazatodaycom.com" data-width="100%"
-                            data-numposts="10"></div>
+                            data-numposts="10" data-order-by="reverse_time"></div>
                     </div>
+
                 </div>
             </div>
 

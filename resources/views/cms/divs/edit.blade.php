@@ -47,11 +47,16 @@
                             <input type="text" name="href" id="href" class="form-control" placeholder="اللينك"
                                 value="{{ $div->href }}">
                         </div>
-                        <div class="row mb-3">
+                        <div class="mb-3 row">
                             <label class="col-form-label col-lg-3">صورة</label>
                             <div class="col-lg-9">
                                 <input type="file" id="image" name="image" class="form-control" accept="image/*">
                                 <div class="form-text">ادخل صورة</div>
+                                <div class="progress-bar">
+                                    <div class="progress"></div>
+                                    <div class="progress-text">0%</div>
+                                </div>
+                                <img id="previewImage" style="display: none;" />
                             </div>
                         </div>
                         <div class="mb-3">
@@ -172,7 +177,7 @@
                     }],
                     dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
                     language: {
-                        search: '<span class="me-3">Filter:</span> <div class="form-control-feedback form-control-feedback-end flex-fill">_INPUT_<div class="form-control-feedback-icon"><i class="ph-magnifying-glass opacity-50"></i></div></div>',
+                        search: '<span class="me-3">Filter:</span> <div class="form-control-feedback form-control-feedback-end flex-fill">_INPUT_<div class="form-control-feedback-icon"><i class="opacity-50 ph-magnifying-glass"></i></div></div>',
                         searchPlaceholder: 'Type to filter...',
                         lengthMenu: '<span class="me-3">Show:</span> _MENU_',
                         paginate: {

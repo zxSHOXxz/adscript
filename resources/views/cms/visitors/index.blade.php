@@ -116,17 +116,16 @@
                         <td> {{ $nameAns->content }} </td>
                         <td> {{ $countryAns->content }} </td>
                         <td> <a href="https://wa.me/{{ $countryCode->dialCode . $mobileAns->content }}"
-                                class="gap-1 text-white btn d-flex fw-bold" style="background-color: #25d366;"><i
+                                class="gap-1 text-white btn d-flex fw-bold" style="background-color: #25d366;" target="_blank"><i
                                     class="fab fa-whatsapp "></i>
                                 {{ $countryCode->dialCode . $mobileAns->content }} </a></td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-
     </div>
     <!-- /basic datatable -->
-
+    {{ $visitors->links('pagination::bootstrap-4') }}
 @endsection
 
 
@@ -174,14 +173,6 @@
                 // Setting datatable defaults
                 $.extend($.fn.dataTable.defaults, {
                     autoWidth: false,
-                    pagingType: "simple",
-                    lengthMenu: [10, 100, 1000, 10000],
-                    language: {
-                        paginate: {
-                            'next': document.dir == "rtl" ? 'Next &larr;' : 'Next &rarr;',
-                            'previous': document.dir == "rtl" ? '&rarr; Prev' : '&larr; Prev'
-                        }
-                    },
                     columnDefs: [{
                         orderable: false,
                         width: 100,
@@ -191,30 +182,12 @@
                     language: {
                         search: '<span class="me-3">Filter:</span> <div class="form-control-feedback form-control-feedback-end flex-fill">_INPUT_<div class="form-control-feedback-icon"><i class="opacity-50 ph-magnifying-glass"></i></div></div>',
                         searchPlaceholder: 'Type to filter...',
-                        lengthMenu: '<span class="me-3">Show:</span> _MENU_',
-                        paginate: {
-                            'first': 'First',
-                            'last': 'Last',
-                            'next': document.dir == "rtl" ? '&larr;' : '&rarr;',
-                            'previous': document.dir == "rtl" ? '&rarr;' : '&larr;'
-                        }
-                    }
+                    },
+                    paging: false, // Disable pagination
                 });
 
                 // Basic datatable
                 $('.datatable-basic').DataTable();
-
-                // Alternative pagination
-                $('.datatable-pagination').DataTable({
-                    pagingType: "simple",
-                    lengthMenu: [10, 25, 50, 1000],
-                    language: {
-                        paginate: {
-                            'next': document.dir == "rtl" ? 'Next &larr;' : 'Next &rarr;',
-                            'previous': document.dir == "rtl" ? '&rarr; Prev' : '&larr; Prev'
-                        }
-                    }
-                });
 
                 // Datatable with saving state
                 $('.datatable-save-state').DataTable({
@@ -233,10 +206,6 @@
                 });
             };
 
-
-            //
-            // Return objects assigned to module
-            //
 
             return {
                 init: function() {

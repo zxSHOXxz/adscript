@@ -34,10 +34,9 @@ class VisitorController extends Controller
                 $query->whereBetween('created_at', [$startDate, $endDate]);
             })
             ->orderBy('id', 'desc')
-            ->paginate(700);
+            ->paginate(300);
         $answers = Answer::with('visitor')->get();
         $countries = Country::orderBy('name', 'asc')->get();
-
         return view('cms.visitors.index', compact('countries', 'options', 'iquestions', 'answers', 'oquestions', 'visitors'));
     }
 

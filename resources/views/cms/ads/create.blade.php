@@ -39,13 +39,19 @@
                                 <input type="text" name="href" id="href" class="form-control"
                                     placeholder="الرابط">
                             </div>
-                            <div class="row mb-3">
+                            <div class="mb-3 row">
                                 <label class="col-form-label col-lg-3">صورة</label>
                                 <div class="col-lg-9">
                                     <input type="file" id="image" name="image" class="form-control"
                                         accept="image/*">
                                     <div class="form-text">ادخل صورة</div>
+                                    <div class="progress-bar">
+                                        <div class="progress"></div>
+                                        <div class="progress-text">0%</div>
+                                    </div>
+                                    <img id="previewImage" style="display: none;" />
                                 </div>
+
                             </div>
                             <div class="mb-3">
                                 <div class="mb-3 row">

@@ -40,7 +40,7 @@
                         <td>{{ $text->id }}</td>
                         <td>{{ $text->content }}</td>
                         <td>{{ $text->name }}</td>
-                        <td class="d-flex justify-content-start gap-2 align-items-center">{{ $text->color->color_number }}
+                        <td class="gap-2 d-flex justify-content-start align-items-center">{{ $text->color->color_number }}
                             <div class="color" style="background-color: {{ $text->color->color_number }}">
 
                             </div>
@@ -115,9 +115,14 @@
                         width: 100,
                         targets: [3]
                     }],
+                    lengthMenu: [
+                        [100, 200, 300, 400, 500],
+                        [100, 200, 300, 400, 500]
+                    ],
+                    pageLength: 100,
                     dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
                     language: {
-                        search: '<span class="me-3">Filter:</span> <div class="form-control-feedback form-control-feedback-end flex-fill">_INPUT_<div class="form-control-feedback-icon"><i class="ph-magnifying-glass opacity-50"></i></div></div>',
+                        search: '<span class="me-3">Filter:</span> <div class="form-control-feedback form-control-feedback-end flex-fill">_INPUT_<div class="form-control-feedback-icon"><i class="opacity-50 ph-magnifying-glass"></i></div></div>',
                         searchPlaceholder: 'Type to filter...',
                         lengthMenu: '<span class="me-3">Show:</span> _MENU_',
                         paginate: {
